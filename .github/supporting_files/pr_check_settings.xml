@@ -1,0 +1,45 @@
+<settings
+  xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd"
+>
+  <profiles>
+    <profile>
+      <id>central</id>
+      <repositories>
+        <repository>
+          <id>Maven central</id>
+          <name>Central Repository</name>
+          <url>https://repo.maven.apache.org/maven2</url>
+          <layout>default</layout>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>apache-snapshots</id>
+      <repositories>
+        <repository>
+          <id>Apache Snapshots</id>
+          <name>Apache Snapshot Repository</name>
+          <url>https://repository.apache.org/snapshots</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>central</activeProfile>
+    <activeProfile>apache-snapshots</activeProfile>
+  </activeProfiles>
+</settings>
+

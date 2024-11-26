@@ -42,7 +42,7 @@ maven_plugins_gav=("org.apache.maven.plugins:maven-resources-plugin:3.3.1" "org.
 properties_with_versions=("compiler-plugin.version:3.11.0" "surefire-plugin.version:3.1.2")
 
 # extra dependencies required for offline mode
-quarkus_extensions_extra_deps="com.aayushatharva.brotli4j:native-linux-aarch64:1.16.0.redhat-00005"
+quarkus_extensions_extra_deps="com.aayushatharva.brotli4j:native-linux-aarch64:1.16.0"
 # common extensions used by the kogito-swf-builder and kogito-swf-devmode
 quarkus_extensions="quarkus-kubernetes,smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus:${kogito_version},org.kie:kie-addons-quarkus-knative-eventing:${kogito_version},org.kie:kogito-addons-quarkus-microprofile-config-service-catalog:${kogito_version},org.kie:kie-addons-quarkus-kubernetes:${kogito_version},org.kie:kogito-addons-quarkus-knative-serving:${kogito_version},org.kie:kie-addons-quarkus-process-management:${kogito_version},org.kie:kie-addons-quarkus-source-files:${kogito_version},org.kie:kie-addons-quarkus-monitoring-prometheus:${kogito_version},org.kie:kie-addons-quarkus-monitoring-sonataflow:${kogito_version}"
 # dev mode purpose extensions used only by the kogito-swf-devmode
