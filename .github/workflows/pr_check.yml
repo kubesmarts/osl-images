@@ -1,4 +1,4 @@
-name: "PR:: Check"
+name: "CI :: PR Check"
 
 on:
   pull_request:
@@ -9,16 +9,18 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Maven and Java
-        uses: s4u/setup-maven-action@v1.16.0
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
+          distribution: "temurin"
           java-version: 17
-          maven-version: 3.9.6
 
       - name: Build apps-maven-builder
         shell: bash
         run: |
           settings_xml=$(realpath .github/supporting_files/pr_check_settings.xml)
           export MAVEN_OPTIONS="-s ${settings_xml}"
-          cd apps-maven-builder
-          mvn clean install
+          mvn -f apps-maven-builder clean install
