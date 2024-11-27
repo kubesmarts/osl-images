@@ -125,11 +125,11 @@ if ! grep -q "<pluginManagement>" "serverless-workflow-project/pom.xml"; then
     pattern_1="[ ]*<build>"
     complete_pattern="$pattern_1"
 
-    replace_1="  <\build>\n"
-    replace_2="    <pluginManagement>\n"
-    replace_3="      <plugins>\n"
-    replace_4="      <\/plugins>\n"
-    replace_5="    <\/pluginManagement>"
+    replace_1="    <\build>\n"
+    replace_2="        <pluginManagement>\n"
+    replace_3="            <plugins>\n"
+    replace_4="            <\/plugins>\n"
+    replace_5="        <\/pluginManagement>"
     complete_replace="$replace_1$replace_2$replace_3$replace_4$replace_5"
 
     sed -i.bak -e "/$pattern_1/{
@@ -149,13 +149,13 @@ for gav in ${maven_plugins_gav[@]}; do
     pattern_2="[ ]*<plugins>"
     complete_pattern="$pattern_1\n$pattern_2"
 
-    replace_1="    <pluginManagement>\n"
-    replace_2="      <plugins>\n"
-    replace_3="        <plugin>\n"
-    replace_4="          <groupId>${group_id}<\/groupId>\n"
-    replace_5="          <artifactId>${artifact_id}<\/artifactId>\n"
-    replace_6="          <version>${version}<\/version>\n"
-    replace_7="        <\/plugin>"
+    replace_1="        <pluginManagement>\n"
+    replace_2="            <plugins>\n"
+    replace_3="                <plugin>\n"
+    replace_4="                    <groupId>${group_id}<\/groupId>\n"
+    replace_5="                    <artifactId>${artifact_id}<\/artifactId>\n"
+    replace_6="                    <version>${version}<\/version>\n"
+    replace_7="                <\/plugin>"
     complete_replace="$replace_1$replace_2$replace_3$replace_4$replace_5$replace_6$replace_7"
 
     sed -i.bak -e "/$pattern_1/{
@@ -170,8 +170,8 @@ for property_with_version in ${properties_with_versions[@]}; do
     new_version=$(echo $property_with_version | cut -f2 -d:)
 
     echo "Replacing property ${property} with value ${new_version}"
-    complete_pattern="[ ]*<${property}>.*<\/${property}>"
-    complete_replace="    <${property}>${new_version}<\/${property}>"
+    complete_pattern="<${property}>.*<\/${property}>"
+    complete_replace="<${property}>${new_version}<\/${property}>"
     sed -i.bak "s/$complete_pattern/$complete_replace/g" serverless-workflow-project/pom.xml
 done
 
