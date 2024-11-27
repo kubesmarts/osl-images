@@ -51,6 +51,9 @@
         <build.quarkusapp.argument.properties-with-versions>compiler-plugin.version:${version.maven-compiler-plugin} surefire-plugin.version:${version.maven-surefire-plugin}</build.quarkusapp.argument.properties-with-versions>
         <build.quarkusapp.argument.quarkus-extensions-extra-deps>com.aayushatharva.brotli4j:native-linux-aarch64:${version.brotli4j}</build.quarkusapp.argument.quarkus-extensions-extra-deps>
         <!-- End of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
+
+        <version.exec-maven-plugin>3.5.0</version.exec-maven-plugin>
+        <version.build-helper-maven-plugin>3.6.0</version.build-helper-maven-plugin>
     </properties>
 
     <modules>
@@ -63,6 +66,17 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${version.exec-maven-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${version.build-helper-maven-plugin}</version>
+                </plugin>
+
                 <!-- Start of block of plugins that will be given to build-quarkus-app.sh script-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
