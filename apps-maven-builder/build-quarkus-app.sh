@@ -23,6 +23,9 @@
 #   2 - Quarkus platform group id
 #   3 - Quarkus platform version
 #   4 - Kogito version
+#   5 - GAV of maven plugins to be injected in the plugin management section
+#   6 - Properties to be replaced in the pom by the new versions
+#   7 - Extra dependencies required for offline mode
 # Note that all parameters are required and can't be empty
 
 # fast fail
@@ -34,15 +37,10 @@ image_name="${1}"
 quarkus_platform_groupid="${2}"
 quarkus_platform_version="${3}"
 kogito_version="${KOGITO_VERSION:-${4}}"
+maven_plugins_gav="${5}"
+properties_with_versions="${6}"
+quarkus_extensions_extra_deps="${7}"
 
-# GAV of maven plugins to be injected in the plugin management section
-maven_plugins_gav=("org.apache.maven.plugins:maven-resources-plugin:3.3.1" "org.apache.maven.plugins:maven-install-plugin:3.1.1" "org.apache.maven.plugins:maven-jar-plugin:3.3.0" "org.apache.maven.plugins:maven-clean-plugin:3.3.1" "org.apache.maven.plugins:maven-deploy-plugin:3.1.1" "org.apache.maven.plugins:maven-site-plugin:3.12.1")
-
-# Properties to be replaced in the pom by the new versions
-properties_with_versions=("compiler-plugin.version:3.11.0" "surefire-plugin.version:3.1.2")
-
-# extra dependencies required for offline mode
-quarkus_extensions_extra_deps="com.aayushatharva.brotli4j:native-linux-aarch64:1.16.0"
 # common extensions used by the kogito-swf-builder and kogito-swf-devmode
 quarkus_extensions="quarkus-kubernetes,smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus:${kogito_version},org.kie:kie-addons-quarkus-knative-eventing:${kogito_version},org.kie:kogito-addons-quarkus-microprofile-config-service-catalog:${kogito_version},org.kie:kie-addons-quarkus-kubernetes:${kogito_version},org.kie:kogito-addons-quarkus-knative-serving:${kogito_version},org.kie:kie-addons-quarkus-process-management:${kogito_version},org.kie:kie-addons-quarkus-source-files:${kogito_version},org.kie:kie-addons-quarkus-monitoring-prometheus:${kogito_version},org.kie:kie-addons-quarkus-monitoring-sonataflow:${kogito_version}"
 # dev mode purpose extensions used only by the kogito-swf-devmode
