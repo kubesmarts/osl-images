@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.kie.kogito</groupId>
-        <artifactId>kogito-image-build-artifacts-parent</artifactId>
+        <groupId>com.redhat.osl</groupId>
+        <artifactId>osl-image-build-artifacts-parent</artifactId>
         <version>999-SNAPSHOT</version>
     </parent>
 
-    <artifactId>kogito-devmode-maven-repository</artifactId>
-    <name>Kogito Dev Mode Quarkus App - Maven repository zip</name>
+    <artifactId>osl-devmode-maven-repository</artifactId>
+    <name>OSL Dev Mode Quarkus App - Maven repository zip</name>
 
     <build>
         <plugins>

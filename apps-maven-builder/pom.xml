@@ -2,16 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.kie.kogito</groupId>
-    <artifactId>kogito-image-build-artifacts-parent</artifactId>
+    <groupId>com.redhat.osl</groupId>
+    <artifactId>osl-image-build-artifacts-parent</artifactId>
     <version>999-SNAPSHOT</version>
 
-    <name>Kogito image build artifacts</name>
-    <description>Maven project to build a Quarkus App with Kogito Serverless Worflow</description>
+    <name>OSL image build artifacts</name>
+    <description>Maven project to build a Quarkus App used by OSL images</description>
     <packaging>pom</packaging>
 
-    <url>http://kogito.kie.org</url>
-    <inceptionYear>2019</inceptionYear>
     <organization>
         <name>JBoss by Red Hat</name>
         <url>http://www.jboss.org/</url>
@@ -25,8 +23,8 @@
         </license>
     </licenses>
     <properties>
-        <build.quarkusapp.argument.imagename.devmode>kogito-swf-devmode</build.quarkusapp.argument.imagename.devmode>
-        <build.quarkusapp.argument.imagename.builder>kogito-swf-builder</build.quarkusapp.argument.imagename.builder>
+        <build.quarkusapp.argument.imagename.devmode>osl-swf-devmode</build.quarkusapp.argument.imagename.devmode>
+        <build.quarkusapp.argument.imagename.builder>osl-swf-builder</build.quarkusapp.argument.imagename.builder>
         <build.quarkusapp.argument.quarkusplatform.groupid>io.quarkus.platform</build.quarkusapp.argument.quarkusplatform.groupid>
         <build.quarkusapp.argument.quarkusplatform.version>3.8.6</build.quarkusapp.argument.quarkusplatform.version>
         <build.quarkusapp.argument.kogitoversion>999-SNAPSHOT</build.quarkusapp.argument.kogitoversion>

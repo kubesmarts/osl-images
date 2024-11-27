@@ -41,12 +41,12 @@ maven_plugins_gav="${5}"
 properties_with_versions="${6}"
 quarkus_extensions_extra_deps="${7}"
 
-# common extensions used by the kogito-swf-builder and kogito-swf-devmode
+# common extensions used by the osl-swf-builder and osl-swf-devmode
 quarkus_extensions="quarkus-kubernetes,smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus:${kogito_version},org.kie:kie-addons-quarkus-knative-eventing:${kogito_version},org.kie:kogito-addons-quarkus-microprofile-config-service-catalog:${kogito_version},org.kie:kie-addons-quarkus-kubernetes:${kogito_version},org.kie:kogito-addons-quarkus-knative-serving:${kogito_version},org.kie:kie-addons-quarkus-process-management:${kogito_version},org.kie:kie-addons-quarkus-source-files:${kogito_version},org.kie:kie-addons-quarkus-monitoring-prometheus:${kogito_version},org.kie:kie-addons-quarkus-monitoring-sonataflow:${kogito_version}"
-# dev mode purpose extensions used only by the kogito-swf-devmode
-kogito_swf_devmode_extensions="org.apache.kie.sonataflow:sonataflow-quarkus-devui:${kogito_version},org.kie:kogito-addons-quarkus-jobs-service-embedded:${kogito_version},org.kie:kogito-addons-quarkus-data-index-inmemory:${kogito_version}"
-# builder/prod extensitons used only by the kogito-swf-builder
-kogito_swf_builder_extensions="org.kie:kie-addons-quarkus-events-process:${kogito_version},org.kie:kogito-addons-quarkus-jobs-knative-eventing:${kogito_version}"
+# dev mode purpose extensions used only by the osl-swf-devmode
+osl_swf_devmode_extensions="org.apache.kie.sonataflow:sonataflow-quarkus-devui:${kogito_version},org.kie:kogito-addons-quarkus-jobs-service-embedded:${kogito_version},org.kie:kogito-addons-quarkus-data-index-inmemory:${kogito_version}"
+# builder/prod extensions used only by the osl-swf-builder
+osl_swf_builder_extensions="org.kie:kie-addons-quarkus-events-process:${kogito_version},org.kie:kogito-addons-quarkus-jobs-knative-eventing:${kogito_version}"
 
 if [ -z ${quarkus_platform_version} ]; then
     echo "Please provide the quarkus version"
@@ -54,11 +54,11 @@ if [ -z ${quarkus_platform_version} ]; then
 fi
 
 case ${image_name} in
-    "kogito-swf-builder")
-        quarkus_extensions="${quarkus_extensions},${kogito_swf_builder_extensions},${quarkus_extensions_extra_deps}"
+    "osl-swf-builder")
+        quarkus_extensions="${quarkus_extensions},${osl_swf_builder_extensions},${quarkus_extensions_extra_deps}"
         ;;
-    "kogito-swf-devmode")
-        quarkus_extensions="${quarkus_extensions},${kogito_swf_devmode_extensions},${quarkus_extensions_extra_deps}"
+    "osl-swf-devmode")
+        quarkus_extensions="${quarkus_extensions},${osl_swf_devmode_extensions},${quarkus_extensions_extra_deps}"
         ;;
     *)
         echo "${image_name} is not a quarkus app image, exiting..."
