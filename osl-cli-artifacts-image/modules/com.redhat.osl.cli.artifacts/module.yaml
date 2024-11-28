@@ -1,0 +1,47 @@
+# Copyright 2024 Apache Software Foundation (ASF)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: "com.redhat.osl.cli.artifacts"
+version: "1.35.0"
+description: "Copy binaries from the packager image"
+
+execute:
+  - script: install.sh
+
+artifacts:
+  - image: packager
+    name: kn-workflow-linux-amd64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-amd64.tar.gz
+    dest: /usr/share/kn/linux_amd64/
+    target: kn-workflow-linux-amd64.tar.gz
+  - image: packager
+    name: kn-workflow-linux-arm64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-arm64.tar.gz
+    dest: /usr/share/kn/linux_arm64/
+    target: kn-workflow-linux-arm64.tar.gz
+  - image: packager
+    name: kn-workflow-windows-amd64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-windows-amd64.zip
+    dest: /usr/share/kn/windows/
+    target: kn-workflow-windows-amd64.zip
+  - image: packager
+    name: kn-workflow-macos-amd64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-macos-amd64.tar.gz
+    dest: /usr/share/kn/macos_amd64/
+    target: kn-workflow-macos-amd64.tar.gz
+  - image: packager
+    name: kn-workflow-macos-arm64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-macos-arm64.tar.gz
+    dest: /usr/share/kn/macos_arm64/
+    target: kn-workflow-macos-arm64.tar.gz
