@@ -17,6 +17,6 @@
 # under the License.
 set -e
 
-cd $REMOTE_SOURCE_DIR/app
+cd $REMOTE_SOURCE_DIR/app/packages/sonataflow-operator
 source $CACHITO_ENV_FILE && go build -trimpath -ldflags=-buildid= -a -o manager cmd/main.go
-mkdir /workspace && cp $REMOTE_SOURCE_DIR/app/manager /workspace
+mkdir /workspace && cp $REMOTE_SOURCE_DIR/app/packages/sonataflow-operator/manager /workspace
