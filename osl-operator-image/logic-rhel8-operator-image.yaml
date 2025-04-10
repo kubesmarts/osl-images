@@ -14,7 +14,7 @@
 
 - schema_version: 1
   name: "operator-builder"
-  version: "1.35.0"
+  version: "1.36.0"
   from: "registry.access.redhat.com/ubi8/go-toolset:1.22"
   description: "Golang builder image for the Red Hat OpenShift Serverless Logic Operator"
 
@@ -43,7 +43,7 @@
             - aarch64
 
 - name: "openshift-serverless-1/logic-rhel8-operator"
-  version: "1.35.0"
+  version: "1.36.0"
   from: "registry.access.redhat.com/ubi8/ubi-micro:latest"
   description: "Runtime Image for the Red Hat OpenShift Serverless Logic Operator"
 
@@ -72,7 +72,7 @@
     extra_dir: osbs-extra
     repository:
       name: containers/openshift-serverless-1-logic-operator
-      branch: openshift-serverless-1.35-rhel-8
+      branch: openshift-serverless-1.36-rhel-8
 
   run:
     user: "1001"
