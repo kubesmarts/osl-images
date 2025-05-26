@@ -18,5 +18,5 @@
 set -e
 
 cd $REMOTE_SOURCE_DIR/app/packages/sonataflow-operator
-source $CACHITO_ENV_FILE && go build -trimpath -ldflags=-buildid= -a -o manager cmd/main.go
+source $CACHITO_ENV_FILE && CGO_ENABLED=0 go build -trimpath -ldflags=-buildid= -a -o manager cmd/main.go
 mkdir /workspace && cp $REMOTE_SOURCE_DIR/app/packages/sonataflow-operator/manager /workspace
