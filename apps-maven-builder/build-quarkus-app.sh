@@ -40,9 +40,10 @@ kogito_version="${KOGITO_VERSION:-${4}}"
 maven_plugins_gav="${5}"
 properties_with_versions="${6}"
 quarkus_extensions_extra_deps="${7}"
+quarkus_version="${8:-${quarkus_platform_version}}"
 
 # common extensions used by the osl-swf-builder and osl-swf-devmode
-quarkus_extensions="quarkus-kubernetes,smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus:${kogito_version},org.kie:kie-addons-quarkus-knative-eventing:${kogito_version},org.kie:kogito-addons-quarkus-microprofile-config-service-catalog:${kogito_version},org.kie:kie-addons-quarkus-kubernetes:${kogito_version},org.kie:kogito-addons-quarkus-knative-serving:${kogito_version},org.kie:kie-addons-quarkus-process-management:${kogito_version},org.kie:kie-addons-quarkus-source-files:${kogito_version},org.kie:kie-addons-quarkus-monitoring-prometheus:${kogito_version},org.kie:kie-addons-quarkus-monitoring-sonataflow:${kogito_version}"
+quarkus_extensions="smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus:${kogito_version},org.kie:kie-addons-quarkus-knative-eventing:${kogito_version},org.kie:kogito-addons-quarkus-microprofile-config-service-catalog:${kogito_version},org.kie:kie-addons-quarkus-kubernetes:${kogito_version},org.kie:kogito-addons-quarkus-knative-serving:${kogito_version},org.kie:kie-addons-quarkus-process-management:${kogito_version},org.kie:kie-addons-quarkus-source-files:${kogito_version},org.kie:kie-addons-quarkus-monitoring-prometheus:${kogito_version},org.kie:kie-addons-quarkus-monitoring-sonataflow:${kogito_version}"
 # dev mode purpose extensions used only by the osl-swf-devmode
 osl_swf_devmode_extensions="org.apache.kie.sonataflow:sonataflow-quarkus-devui:${kogito_version},org.kie:kogito-addons-quarkus-jobs-service-embedded:${kogito_version},org.kie:kogito-addons-quarkus-data-index-inmemory:${kogito_version}"
 # builder/prod extensions used only by the osl-swf-builder
@@ -56,6 +57,8 @@ fi
 case ${image_name} in
     "osl-swf-builder")
         quarkus_extensions="${quarkus_extensions},${osl_swf_builder_extensions},${quarkus_extensions_extra_deps}"
+        # additional libraries not meant to be added to pom.xml
+        osl_swf_builder_additional_libs="org.kie:kie-addons-quarkus-persistence-jdbc:${kogito_version},io.quarkus:quarkus-jdbc-postgresql:${quarkus_version}"
         ;;
     "osl-swf-devmode")
         quarkus_extensions="${quarkus_extensions},${osl_swf_devmode_extensions},${quarkus_extensions_extra_deps}"
@@ -175,18 +178,6 @@ for property_with_version in ${properties_with_versions[@]}; do
     sed -i.bak "s/$complete_pattern/$complete_replace/g" serverless-workflow-project/pom.xml
 done
 
-echo "Build quarkus app"
-cd "serverless-workflow-project"
-# Quarkus version is enforced if some dependency pulled has older version of Quarkus set.
-# This avoids to have, for example, Quarkus BOMs or other artifacts with multiple versions.
-mvn ${MAVEN_OPTIONS} \
-    -DskipTests \
-    -Dmaven.repo.local=${mvn_local_repo} \
-    -Dquarkus.container-image.build=false \
-    clean install dependency:go-offline "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":go-offline
-
-cd ${build_target_dir}
-
 #remove unnecessary files
 rm -rfv serverless-workflow-project/target
 rm -rfv serverless-workflow-project/src/main/resources/*
@@ -195,6 +186,36 @@ rm -rfv serverless-workflow-project/.mvn/wrapper
 rm -rfv serverless-workflow-project/mvnw*
 rm -rfv serverless-workflow-project/src/test
 rm -rfv serverless-workflow-project/*.bak
+
+echo "Build quarkus app"
+cd "serverless-workflow-project"
+# Quarkus version is enforced if some dependency pulled has older version of Quarkus set.
+# This avoids to have, for example, Quarkus BOMs or other artifacts with multiple versions.
+mvn ${MAVEN_OPTIONS} \
+    -Dmaven.repo.local=${mvn_local_repo} \
+    -Dquarkus.container-image.build=false \
+    clean install dependency:go-offline "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":go-offline
+
+# additional libraries (supports comma-separated list via xargs)
+if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
+  echo "Adding additional dependencies to m2: ${osl_swf_builder_additional_libs}"
+  printf '%s\n' ${osl_swf_builder_additional_libs//,/ } | \
+  xargs -n1 -I{} \
+    mvn -B ${MAVEN_OPTIONS} \
+      -Dmaven.repo.local=${mvn_local_repo} \
+      dependency:get \
+      -U \
+      -Dartifact="{}"
+fi
+
+#clean up
+mvn -B ${MAVEN_OPTIONS} \
+  -nsu \
+  -Dmaven.repo.local=${mvn_local_repo} \
+  clean
+
+cd ${build_target_dir}
+
 
 # Maven useless files
 # Needed to avoid Maven to automatically re-download from original Maven repository ...
