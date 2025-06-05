@@ -26,7 +26,9 @@
         <build.quarkusapp.argument.imagename.devmode>osl-swf-devmode</build.quarkusapp.argument.imagename.devmode>
         <build.quarkusapp.argument.imagename.builder>osl-swf-builder</build.quarkusapp.argument.imagename.builder>
         <build.quarkusapp.argument.quarkusplatform.groupid>io.quarkus.platform</build.quarkusapp.argument.quarkusplatform.groupid>
-        <build.quarkusapp.argument.quarkusplatform.version>3.15.3</build.quarkusapp.argument.quarkusplatform.version>
+        <build.quarkusapp.argument.quarkusplatform.version>3.20.1</build.quarkusapp.argument.quarkusplatform.version>
+        <!-- Quarkus version and Quarkus Platform version might be different due to rebuilds downstream -->
+        <build.quarkusapp.argument.quarkus.version>3.20.1</build.quarkusapp.argument.quarkus.version>
         <build.quarkusapp.argument.kogitoversion>999-SNAPSHOT</build.quarkusapp.argument.kogitoversion>
 
         <!-- Start of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
@@ -36,8 +38,9 @@
         <version.maven-clean-plugin>3.4.0</version.maven-clean-plugin>
         <version.maven-deploy-plugin>3.1.3</version.maven-deploy-plugin>
         <version.maven-site-plugin>3.21.0</version.maven-site-plugin>
-        <version.maven-compiler-plugin>3.13.0</version.maven-compiler-plugin>
+        <version.maven-compiler-plugin>3.14.0</version.maven-compiler-plugin>
         <version.maven-surefire-plugin>3.5.2</version.maven-surefire-plugin>
+        <version.maven-failsafe-plugin>3.5.2</version.maven-failsafe-plugin>
         <version.brotli4j>1.16.0</version.brotli4j> <!-- Needs to be aligned with same version used on quarkus-bom -->
 
         <gav.maven-resouces-plugin>org.apache.maven.plugins:maven-resources-plugin:${version.maven-resouces-plugin}</gav.maven-resouces-plugin>
@@ -48,7 +51,7 @@
         <gav.maven-site-plugin>org.apache.maven.plugins:maven-site-plugin:${version.maven-site-plugin}</gav.maven-site-plugin>
 
         <build.quarkusapp.argument.maven-plugins-gav>${gav.maven-resouces-plugin} ${gav.maven-install-plugin} ${gav.maven-jar-plugin} ${gav.maven-clean-plugin} ${gav.maven-deploy-plugin} ${gav.maven-site-plugin}</build.quarkusapp.argument.maven-plugins-gav>
-        <build.quarkusapp.argument.properties-with-versions>compiler-plugin.version:${version.maven-compiler-plugin} surefire-plugin.version:${version.maven-surefire-plugin}</build.quarkusapp.argument.properties-with-versions>
+        <build.quarkusapp.argument.properties-with-versions>compiler-plugin.version:${version.maven-compiler-plugin} surefire-plugin.version:${version.maven-surefire-plugin} failsafe-plugin.version:${version.maven-failsafe-plugin}</build.quarkusapp.argument.properties-with-versions>
         <build.quarkusapp.argument.quarkus-extensions-extra-deps>com.aayushatharva.brotli4j:native-linux-aarch64:${version.brotli4j}</build.quarkusapp.argument.quarkus-extensions-extra-deps>
         <!-- End of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
 
@@ -118,6 +121,11 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${version.maven-surefire-plugin}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${version.maven-failsafe-plugin}</version>
+                </plugin>
                 <!-- End of block of plugins that will be given to build-quarkus-app.sh script-->
             </plugins>
         </pluginManagement>
@@ -143,6 +151,7 @@
                                 <argument>${build.quarkusapp.argument.maven-plugins-gav}</argument>
                                 <argument>${build.quarkusapp.argument.properties-with-versions}</argument>
                                 <argument>${build.quarkusapp.argument.quarkus-extensions-extra-deps}</argument>
+                                <argument>${build.quarkusapp.argument.quarkus.version}</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -162,6 +171,7 @@
                                 <argument>${build.quarkusapp.argument.maven-plugins-gav}</argument>
                                 <argument>${build.quarkusapp.argument.properties-with-versions}</argument>
                                 <argument>${build.quarkusapp.argument.quarkus-extensions-extra-deps}</argument>
+                                <argument>${build.quarkusapp.argument.quarkus.version}</argument>
                             </arguments>
                         </configuration>
                     </execution>
