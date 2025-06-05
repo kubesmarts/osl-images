@@ -193,33 +193,33 @@ cd "serverless-workflow-project"
 # Quarkus version is enforced if some dependency pulled has older version of Quarkus set.
 # This avoids to have, for example, Quarkus BOMs or other artifacts with multiple versions.
 
+cp "pom.xml" "pom.bak"
+
+# additional libraries (supports comma-separated list via xargs)
+if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
+  echo "Adding additional dependencies (extensions): ${osl_swf_builder_additional_libs}"
+  echo "${osl_swf_builder_additional_libs}" | tr ',' '\n' | \
+    xargs -n1 -I{} \
+      mvn -B ${MAVEN_OPTIONS} \
+        -Dmaven.repo.local=${mvn_local_repo} \
+        quarkus:add-extension \
+        -Dextensions="{}"
+fi
+
 # 1) Build + install first (POM’s dependencies get recorded in the local cache)
 mvn ${MAVEN_OPTIONS} \
    -Dmaven.repo.local=${mvn_local_repo} \
    clean install
 
-# 2) Populate transitive dependencies (Maven’s own “go-offline”)
-mvn ${MAVEN_OPTIONS} \
-   -Dmaven.repo.local=${mvn_local_repo} \
-   dependency:go-offline
-
-# 3) Then let Quarkus finalize its offline cache (Quarkus’s “go-offline” goal)
+# 2) Then let Quarkus finalize its offline cache (Quarkus’s “go-offline” goal)
 mvn ${MAVEN_OPTIONS} \
    -Dmaven.repo.local=${mvn_local_repo} \
    "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":go-offline
 
-
-# additional libraries (supports comma-separated list via xargs)
-if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
-  echo "Adding additional dependencies to m2: ${osl_swf_builder_additional_libs}"
-  printf '%s\n' ${osl_swf_builder_additional_libs//,/ } | \
-  xargs -n1 -I{} \
-    mvn -B ${MAVEN_OPTIONS} \
-      -Dmaven.repo.local=${mvn_local_repo} \
-      dependency:get \
-      -U \
-      -Dartifact="{}"
-fi
+# 3) Populate transitive dependencies (Maven’s own “go-offline”)
+mvn ${MAVEN_OPTIONS} \
+   -Dmaven.repo.local=${mvn_local_repo} \
+   dependency:go-offline
 
 #clean up
 mvn -B ${MAVEN_OPTIONS} \
@@ -227,13 +227,14 @@ mvn -B ${MAVEN_OPTIONS} \
   -Dmaven.repo.local=${mvn_local_repo} \
   clean
 
+mv "pom.bak" "pom.xml"
+
 cd ${build_target_dir}
 
 
 # Maven useless files
 # Needed to avoid Maven to automatically re-download from original Maven repository ...
-find ${mvn_local_repo} -name _remote.repositories -type f -delete
-find ${mvn_local_repo} -name _maven.repositories -type f -delete
+find ${mvn_local_repo} -name '_*.repositories' -type f -delete
 find ${mvn_local_repo} -name *.lastUpdated -type f -delete
 
 echo "Zip and copy scaffold project"
