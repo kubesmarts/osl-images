@@ -56,7 +56,7 @@
         <!-- End of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
 
         <version.exec-maven-plugin>3.5.1</version.exec-maven-plugin>
-        <version.build-helper-maven-plugin>3.6.0</version.build-helper-maven-plugin>
+        <version.build-helper-maven-plugin>3.6.1</version.build-helper-maven-plugin>
     </properties>
 
     <modules>
