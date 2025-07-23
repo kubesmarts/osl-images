@@ -23,9 +23,9 @@ description: "OpenShift Serverless Logic Management Console Image"
 
 labels:
   - name: "io.quarkus.platform.version"
-    value: "3.15.3.1"
+    value: "3.20.1"
   - name: "org.kie.kogito.version"
-    value: "999-20250511-local"
+    value: "999-20250622-local"
   - name: "maintainer"
     value: "Red Hat <serverless-logic-team@redhat.com>"
   - name: "io.k8s.description"
