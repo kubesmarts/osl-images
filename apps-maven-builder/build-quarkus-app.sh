@@ -181,7 +181,9 @@ done
 
 #remove unnecessary files
 rm -rfv serverless-workflow-project/target
-rm -rfv serverless-workflow-project/src/main/resources/*
+# Workaround: Remove only application.properties as the greet.sw.json located in
+# resources directory is required to exist for build to pass
+rm -rfv serverless-workflow-project/src/main/resources/application.properties
 rm -rfv serverless-workflow-project/src/main/docker
 rm -rfv serverless-workflow-project/.mvn/wrapper
 rm -rfv serverless-workflow-project/mvnw*
