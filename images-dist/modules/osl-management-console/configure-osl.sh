@@ -22,6 +22,8 @@ set -e
 SCRIPT_DIR=$(dirname "${0}")
 MGMT_CONSOLE_HOME="${KOGITO_HOME}/management-console"
 
+mkdir -p ${MGMT_CONSOLE_HOME}/app
+
 # Add the dist files that can't be downloaded on Cpaas
 cp -v "${SCRIPT_DIR}/added/EnvJson.schema.json" "${MGMT_CONSOLE_HOME}"
 cp -v "${SCRIPT_DIR}/added/image-env-to-json-linux-amd64" "${MGMT_CONSOLE_HOME}"
