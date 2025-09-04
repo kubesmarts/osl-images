@@ -30,5 +30,5 @@ cp -v "${SCRIPT_DIR}/added/image-env-to-json-linux-amd64" "${MGMT_CONSOLE_HOME}"
 
 # Unzip the app
 cd "${MGMT_CONSOLE_HOME}/app"
-unzip -q "sonataflow-management-console-webapp-image-build.zip"
-rm -rf "sonataflow-management-console-webapp-image-build.zip"
+unzip -q "/tmp/artifacts/sonataflow-management-console-webapp-image-build.zip"
+rm -rf "/tmp/artifacts/sonataflow-management-console-webapp-image-build.zip"
