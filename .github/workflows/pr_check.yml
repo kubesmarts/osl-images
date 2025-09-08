@@ -23,4 +23,4 @@ jobs:
         run: |
           settings_xml=$(realpath .github/supporting_files/pr_check_settings.xml)
           export MAVEN_OPTIONS="-s ${settings_xml}"
-          mvn -f apps-maven-builder clean install
+          mvn -B -f apps-maven-builder clean install
