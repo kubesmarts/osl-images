@@ -14,22 +14,22 @@
 
 - name: "packager"
   version: "999.0.0.main"
-  from: "registry.access.redhat.com/ubi8/ubi-minimal:latest"
+  from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   modules:
     repositories:
       - path: modules
     install:
       - name: com.redhat.osl.cli.packager
 
-- name: "openshift-serverless-1/logic-kn-workflow-cli-artifacts-rhel8"
+- name: "openshift-serverless-1/logic-kn-workflow-cli-artifacts-rhel9"
   version: "999.0.0.main"
   description: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
-  from: "registry.access.redhat.com/ubi8/ubi-minimal:latest"
+  from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   labels:
     - name: com.redhat.component
-      value: "openshift-serverless-1-logic-kn-workflow-cli-artifacts-rhel8-container"
+      value: "openshift-serverless-1-logic-kn-workflow-cli-artifacts-rhel9-container"
     - name: name
-      value: "openshift-serverless-1/kn-workflow-cli-artifacts-rhel8"
+      value: "openshift-serverless-1/kn-workflow-cli-artifacts-rhel9"
     - name: version
       value: "999.0.0.main"
     - name: summary
@@ -67,4 +67,4 @@
           pulp_repos: true
     repository:
       name: containers/openshift-serverless-1-logic-kn-workflow-cli-artifacts
-      branch: openshift-serverless-999.0.0.main-rhel-8
+      branch: openshift-serverless-999.0.0.main-rhel-9

@@ -26,9 +26,9 @@
 # likely this will be x86_64 and ppc64le initially.
 ---
 x86_64:
-  - rhel-8-for-x86_64-baseos-rpms
-  - rhel-8-for-x86_64-appstream-rpms
-  - rhocp-4.7-for-rhel-8-x86_64-rpms
+  - rhel-9-for-x86_64-baseos-rpms
+  - rhel-9-for-x86_64-appstream-rpms
+  - rhocp-4.14-for-rhel-9-x86_64-rpms
 aarch64:
-  - rhel-8-for-aarch64-baseos-rpms
-  - rhel-8-for-aarch64-appstream-rpms
+  - rhel-9-for-aarch64-baseos-rpms
+  - rhel-9-for-aarch64-appstream-rpms
