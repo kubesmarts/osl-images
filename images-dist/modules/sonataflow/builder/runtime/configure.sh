@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -16,15 +17,16 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-schema_version: 1
-name: org.kie.kogito.jobs.service.common
-version: "main"
-description: "This module needs to be run last, if adding it, add in the last position."
 
-envs:
-  - name: "KOGITO_JOBS_SERVICE_UI_PATH"
-    value: "/home/kogito/ui/"
-    description: "Path where the Jobs Service WebApp UI is served"
+set -e
 
-execute:
-  - script: configure
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ADDED_DIR="${SCRIPT_DIR}"/added
+LAUNCH_DIR="${KOGITO_HOME}"/launch
+
+mkdir -p "${LAUNCH_DIR}"
+
+cp -v "${ADDED_DIR}"/* "${LAUNCH_DIR}"
+
+chown -R 1001:0 "${KOGITO_HOME}"
+chmod -R ug+rwX "${KOGITO_HOME}"
