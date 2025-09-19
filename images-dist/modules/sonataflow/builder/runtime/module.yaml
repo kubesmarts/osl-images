@@ -17,14 +17,9 @@
 # under the License.
 #
 schema_version: 1
-name: org.kie.kogito.jobs.service.common
+name: org.kie.sonataflow.builder.runtime
 version: "main"
-description: "This module needs to be run last, if adding it, add in the last position."
-
-envs:
-  - name: "KOGITO_JOBS_SERVICE_UI_PATH"
-    value: "/home/kogito/ui/"
-    description: "Path where the Jobs Service WebApp UI is served"
+description: "Apache KIE SonataFlow builder runtime module"
 
 execute:
-  - script: configure
+  - script: configure.sh
