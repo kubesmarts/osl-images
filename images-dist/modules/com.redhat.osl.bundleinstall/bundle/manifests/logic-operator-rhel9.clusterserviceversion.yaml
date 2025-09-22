@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2025-09-19T11:14:54Z"
+    createdAt: "2025-09-22T14:47:22Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow
       applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
@@ -869,7 +869,7 @@ spec:
   maintainers:
   - email: serverless-logic-team@redhat.com
     name: Red Hat
-  maturity: alpha
+  maturity: stable
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
