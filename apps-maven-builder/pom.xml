@@ -38,7 +38,7 @@
         <version.maven-clean-plugin>3.5.0</version.maven-clean-plugin>
         <version.maven-deploy-plugin>3.1.4</version.maven-deploy-plugin>
         <version.maven-site-plugin>3.21.0</version.maven-site-plugin>
-        <version.maven-compiler-plugin>3.14.0</version.maven-compiler-plugin>
+        <version.maven-compiler-plugin>3.14.1</version.maven-compiler-plugin>
         <version.maven-surefire-plugin>3.5.3</version.maven-surefire-plugin>
         <version.maven-failsafe-plugin>3.5.3</version.maven-failsafe-plugin>
         <version.brotli4j>1.16.0</version.brotli4j> <!-- Needs to be aligned with same version used on quarkus-bom -->
