@@ -13,7 +13,7 @@
 # limitations under the License.
 
 - name: "packager"
-  version: "999.0.0.main"
+  version: "1.37"
   from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   modules:
     repositories:
@@ -22,7 +22,7 @@
       - name: com.redhat.osl.cli.packager
 
 - name: "openshift-serverless-1/logic-kn-workflow-cli-artifacts-rhel9"
-  version: "999.0.0.main"
+  version: "1.37"
   description: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
   from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   labels:
@@ -31,7 +31,7 @@
     - name: name
       value: "openshift-serverless-1/kn-workflow-cli-artifacts-rhel9"
     - name: version
-      value: "999.0.0.main"
+      value: "1.37"
     - name: summary
       value: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
     - name: description
@@ -67,4 +67,4 @@
           pulp_repos: true
     repository:
       name: containers/openshift-serverless-1-logic-kn-workflow-cli-artifacts
-      branch: openshift-serverless-999.0.0.main-rhel-9
+      branch: openshift-serverless-1.37-rhel-9

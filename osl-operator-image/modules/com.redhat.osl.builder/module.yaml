@@ -13,7 +13,7 @@
 # limitations under the License.
 
 name: com.redhat.osl.builder
-version: "999.0.0.main"
+version: "1.37"
 description: Builds the operator binary
 
 envs:
