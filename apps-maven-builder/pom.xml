@@ -4,7 +4,7 @@
 
     <groupId>com.redhat.osl</groupId>
     <artifactId>osl-image-build-artifacts-parent</artifactId>
-    <version>999-SNAPSHOT</version>
+    <version>9.104.0</version>
 
     <name>OSL image build artifacts</name>
     <description>Maven project to build a Quarkus App used by OSL images</description>
@@ -29,7 +29,7 @@
         <build.quarkusapp.argument.quarkusplatform.version>3.20.1</build.quarkusapp.argument.quarkusplatform.version>
         <!-- Quarkus version and Quarkus Platform version might be different due to rebuilds downstream -->
         <build.quarkusapp.argument.quarkus.version>3.20.1</build.quarkusapp.argument.quarkus.version>
-        <build.quarkusapp.argument.kogitoversion>999-SNAPSHOT</build.quarkusapp.argument.kogitoversion>
+        <build.quarkusapp.argument.kogitoversion>9.104.0</build.quarkusapp.argument.kogitoversion>
 
         <!-- Start of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
         <version.maven-resouces-plugin>3.3.1</version.maven-resouces-plugin>
