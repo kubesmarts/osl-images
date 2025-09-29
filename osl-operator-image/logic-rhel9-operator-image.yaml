@@ -14,7 +14,7 @@
 
 - schema_version: 1
   name: "operator-builder"
-  version: "999.0.0.main"
+  version: "1.37"
   from: "registry.access.redhat.com/ubi9/go-toolset:1.23"
   description: "Golang builder image for the Red Hat OpenShift Serverless Logic Operator"
 
@@ -30,7 +30,7 @@
         image_build_method: imagebuilder
         remote_source:
           repo: https://github.com/kubesmarts/kie-tools
-          ref: 7aea06c5e112c3236d8ae86bc5ca0f85fc59917b
+          ref: 3ca6268736c25c83c386a969471ba93bea8b8697
           pkg_managers:
             - gomod
           packages:
@@ -43,7 +43,7 @@
             - aarch64
 
 - name: "openshift-serverless-1/logic-rhel9-operator"
-  version: "999.0.0.main"
+  version: "1.37"
   from: "registry.access.redhat.com/ubi9/ubi-micro:latest"
   description: "Runtime Image for the Red Hat OpenShift Serverless Logic Operator"
 
@@ -72,7 +72,7 @@
     extra_dir: osbs-extra
     repository:
       name: containers/openshift-serverless-1-logic-operator
-      branch: openshift-serverless-1.35-rhel-9
+      branch: openshift-serverless-1.37-rhel-9
 
   run:
     user: "1001"

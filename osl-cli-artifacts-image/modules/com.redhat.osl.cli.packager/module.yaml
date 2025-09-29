@@ -13,7 +13,7 @@
 # limitations under the License.
 
 name: "com.redhat.osl.cli.packager"
-version: "999.0.0.main"
+version: "1.37"
 description: "Download kn-workflow cli binaries from a given repository"
 
 packages:
