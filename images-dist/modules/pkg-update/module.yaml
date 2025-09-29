@@ -18,7 +18,7 @@
 #
 schema_version: 1
 name: com.redhat.osl.pkg-update
-version: "main"
+version: "1.37.0"
 description: "Perform a system update via the package manager."
 
 execute:

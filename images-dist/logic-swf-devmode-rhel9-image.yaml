@@ -19,14 +19,14 @@
 schema_version: 1
 name: "openshift-serverless-1/logic-swf-devmode-rhel9"
 from: "registry.access.redhat.com/ubi9/openjdk-17:1.23"
-version: "main"
+version: "1.37.0"
 description: "Red Hat build of Kogito Serverless Workflow development mode image with Quarkus extensions libraries preinstalled"
 
 labels:
   - name: "io.quarkus.platform.version"
     value: "3.20.1"
   - name: "org.kie.kogito.version"
-    value: "999-SNAPSHOT"
+    value: "9.104.0"
   - name: "io.k8s.description"
     value: "Red Hat build of Kogito Serverless Workflow development mode image with Quarkus extensions libraries preinstalled."
   - name: "io.k8s.display-name"
@@ -84,4 +84,4 @@ osbs:
   extra_dir: osbs-extra/logic-swf-devmode-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-swf-devmode
-    branch: openshift-serverless-main-rhel-9
+    branch: openshift-serverless-1.37-rhel-9
