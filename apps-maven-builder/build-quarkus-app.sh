@@ -91,7 +91,7 @@ fi
 set -x
 echo "Create quarkus project to path ${build_target_dir}"
 cd ${build_target_dir}
-mvn -B ${MAVEN_OPTIONS} \
+mvn -B \
     -Dmaven.repo.local=${mvn_local_repo} \
     -DprojectGroupId="org.acme" \
     -DprojectArtifactId="serverless-workflow-project" \
@@ -201,29 +201,29 @@ if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
   echo "Adding additional dependencies (extensions): ${osl_swf_builder_additional_libs}"
   echo "${osl_swf_builder_additional_libs}" | tr ',' '\n' | \
     xargs -n1 -I{} \
-      mvn -B ${MAVEN_OPTIONS} \
+      mvn -B \
         -Dmaven.repo.local=${mvn_local_repo} \
         quarkus:add-extension \
         -Dextensions="{}"
 fi
 
 # 1) Build + install first (POM’s dependencies get recorded in the local cache)
-mvn -B ${MAVEN_OPTIONS} \
+mvn -B \
    -Dmaven.repo.local=${mvn_local_repo} \
    clean install
 
 # 2) Then let Quarkus finalize its offline cache (Quarkus’s “go-offline” goal)
-mvn -B ${MAVEN_OPTIONS} \
+mvn -B \
    -Dmaven.repo.local=${mvn_local_repo} \
    "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":go-offline
 
 # 3) Populate transitive dependencies (Maven’s own “go-offline”)
-mvn -B ${MAVEN_OPTIONS} \
+mvn -B \
    -Dmaven.repo.local=${mvn_local_repo} \
    dependency:go-offline
 
 #clean up
-mvn -B ${MAVEN_OPTIONS} \
+mvn -B \
   -nsu \
   -Dmaven.repo.local=${mvn_local_repo} \
   clean
