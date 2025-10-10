@@ -91,7 +91,7 @@ fi
 set -x
 echo "Create quarkus project to path ${build_target_dir}"
 cd ${build_target_dir}
-mvn -B \
+mvn -X -B \
     -Dmaven.repo.local=${mvn_local_repo} \
     -DprojectGroupId="org.acme" \
     -DprojectArtifactId="serverless-workflow-project" \
@@ -201,7 +201,7 @@ if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
   echo "Adding additional dependencies (extensions): ${osl_swf_builder_additional_libs}"
   echo "${osl_swf_builder_additional_libs}" | tr ',' '\n' | \
     xargs -n1 -I{} \
-      mvn -B \
+      mvn -X -B \
         -Dmaven.repo.local=${mvn_local_repo} \
         quarkus:add-extension \
         -Dextensions="{}"
