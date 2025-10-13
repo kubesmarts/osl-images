@@ -23,7 +23,7 @@ description: "OpenShift Serverless Logic Management Console Image"
 
 labels:
   - name: "io.quarkus.platform.version"
-    value: "3.20.1"
+    value: "3.20.2"
   - name: "org.kie.kogito.version"
     value: "9.104.0"
   - name: "maintainer"
