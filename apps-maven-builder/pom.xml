@@ -26,9 +26,9 @@
         <build.quarkusapp.argument.imagename.devmode>osl-swf-devmode</build.quarkusapp.argument.imagename.devmode>
         <build.quarkusapp.argument.imagename.builder>osl-swf-builder</build.quarkusapp.argument.imagename.builder>
         <build.quarkusapp.argument.quarkusplatform.groupid>io.quarkus.platform</build.quarkusapp.argument.quarkusplatform.groupid>
-        <build.quarkusapp.argument.quarkusplatform.version>3.20.1</build.quarkusapp.argument.quarkusplatform.version>
+        <build.quarkusapp.argument.quarkusplatform.version>3.20.2</build.quarkusapp.argument.quarkusplatform.version>
         <!-- Quarkus version and Quarkus Platform version might be different due to rebuilds downstream -->
-        <build.quarkusapp.argument.quarkus.version>3.20.1</build.quarkusapp.argument.quarkus.version>
+        <build.quarkusapp.argument.quarkus.version>3.20.2</build.quarkusapp.argument.quarkus.version>
         <build.quarkusapp.argument.kogitoversion>9.104.0</build.quarkusapp.argument.kogitoversion>
 
         <!-- Start of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->

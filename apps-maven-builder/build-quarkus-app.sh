@@ -203,6 +203,7 @@ if [ ! -z "${osl_swf_builder_additional_libs}" ]; then
     xargs -n1 -I{} \
       mvn -B ${MAVEN_OPTIONS} \
         -Dmaven.repo.local=${mvn_local_repo} \
+        -DquarkusRegistryClient=false \
         quarkus:add-extension \
         -Dextensions="{}"
 fi
