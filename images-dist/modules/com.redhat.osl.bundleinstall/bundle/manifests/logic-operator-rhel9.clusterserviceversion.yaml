@@ -873,22 +873,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  relatedImages:
-  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:main
-    name: jobs-service-postgresql
-  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:main
-    name: jobs-service-ephemeral
-  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:main
-    name: data-index-postgresql
-  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:main
-    name: data-index-ephemeral
-  - image: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:main
-    name: db-migrator-tool
-  - image: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:main
-    name: base-builder
-  - image: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:main
-    name: devmode
-  - image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
-    name: kube-rbac-proxy
   replaces: logic-operator-rhel8.v1.36.0
   version: 1.37.0
