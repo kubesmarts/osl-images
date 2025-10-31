@@ -47,7 +47,7 @@ data:
     # If empty the operator will use the default Apache Community one based on the current operator's version.
     sonataFlowDevModeImageTag: ""
     # The default name of the builder configMap in the operator's namespace
-    builderConfigMapName: "sonataflow-operator-builder-config"
+    builderConfigMapName: "logic-operator-rhel9-builder-config"
     # Quarkus extensions required for workflows persistence. These extensions are used by the SonataFlow build system,
     # in cases where the workflow being built has configured postgresql persistence.
     postgreSQLPersistenceExtensions:
