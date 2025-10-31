@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: ["**"]
     types: [opened, reopened, ready_for_review, synchronize]
+    paths:
+      - 'apps-maven-builder/**'
 
 jobs:
   run:
