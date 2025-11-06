@@ -10,6 +10,11 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+    env:
+      DROOLS_REPO_URL: "https://github.com/kiegroup/drools"
+      KOGITO_RUNTIMES_REPO_URL: "https://github.com/kiegroup/kogito-runtimes"
+      KOGITO_APPS_REPO_URL: "https://github.com/kiegroup/kogito-apps"
+      DEPS_BRANCHNAME: "9.104.x-prod"
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
@@ -19,6 +24,39 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 17
+
+      - name: Clone and Build Drools, Runtimes and Apps repositories
+        shell: bash
+        run: |
+          echo "Building Drools, Runtimes and Apps"
+          cd ..
+  
+          echo "::group::Cloning drools branch..."
+          echo "git clone --depth 1 --branch  ${{ DEPS_BRANCHNAME }} ${{ DROOLS_REPO_URL }}"
+          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ DROOLS_REPO_URL }}
+          cd drools
+          mvn clean install -B -Dquickly
+          cd ..
+          rm -rf drools
+          echo "::endgroup::"
+  
+          echo "::group::Cloning kogito-runtimes ${{ DEPS_BRANCHNAME }} branch..."
+          echo "git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_RUNTIMES_REPO_URL }}"
+          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_RUNTIMES_REPO_URL }}
+          cd kogito-runtimes
+          mvn clean install -B -Dquickly
+          cd ..
+          rm -rf kogito-runtimes
+          echo "::endgroup::"
+  
+          echo "::group::Cloning kogito-apps ${{ DEPS_BRANCHNAME }} branch..."
+          echo "git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_APPS_REPO_URL }}"
+          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_APPS_REPO_URL }}
+          cd kogito-apps
+          mvn clean install -B -Dquickly
+          cd ..
+          rm -rf kogito-apps
+          echo "::endgroup::"
 
       - name: Build apps-maven-builder
         shell: bash
