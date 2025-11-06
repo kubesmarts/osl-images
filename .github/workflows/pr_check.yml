@@ -29,6 +29,8 @@ jobs:
       - name: Clone and Build Drools, Runtimes and Apps repositories
         shell: bash
         run: |
+          settings_xml=$(realpath .github/supporting_files/pr_check_settings.xml)
+          export MAVEN_OPTIONS="-s ${settings_xml}"
           echo "Building Drools, Runtimes and Apps"
           cd ..
   
