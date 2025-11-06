@@ -32,26 +32,26 @@ jobs:
           cd ..
   
           echo "::group::Cloning drools branch..."
-          echo "git clone --depth 1 --branch  ${{ DEPS_BRANCHNAME }} ${{ DROOLS_REPO_URL }}"
-          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ DROOLS_REPO_URL }}
+          echo "git clone --depth 1 --branch  $DEPS_BRANCHNAME $DROOLS_REPO_URL"
+          git clone --depth 1 --branch $DEPS_BRANCHNAME $DROOLS_REPO_URL
           cd drools
           mvn clean install -B -Dquickly
           cd ..
           rm -rf drools
           echo "::endgroup::"
   
-          echo "::group::Cloning kogito-runtimes ${{ DEPS_BRANCHNAME }} branch..."
-          echo "git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_RUNTIMES_REPO_URL }}"
-          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_RUNTIMES_REPO_URL }}
+          echo "::group::Cloning kogito-runtimes $DEPS_BRANCHNAME branch..."
+          echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL"
+          git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL
           cd kogito-runtimes
           mvn clean install -B -Dquickly
           cd ..
           rm -rf kogito-runtimes
           echo "::endgroup::"
   
-          echo "::group::Cloning kogito-apps ${{ DEPS_BRANCHNAME }} branch..."
-          echo "git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_APPS_REPO_URL }}"
-          git clone --depth 1 --branch ${{ DEPS_BRANCHNAME }} ${{ KOGITO_APPS_REPO_URL }}
+          echo "::group::Cloning kogito-apps $DEPS_BRANCHNAME branch..."
+          echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_APPS_REPO_URL"
+          git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_APPS_REPO_URL
           cd kogito-apps
           mvn clean install -B -Dquickly
           cd ..
