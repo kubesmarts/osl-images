@@ -16,6 +16,8 @@ jobs:
       KOGITO_RUNTIMES_REPO_URL: "https://github.com/kiegroup/kogito-runtimes"
       KOGITO_APPS_REPO_URL: "https://github.com/kiegroup/kogito-apps"
       DEPS_BRANCHNAME: "9.104.x-prod"
+      NIGHTLY: "true"
+      NIGHTLY_DEPLOY_FOLDER: "/home/runner/.m2/repository"
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
