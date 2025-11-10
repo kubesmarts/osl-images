@@ -47,7 +47,7 @@ jobs:
           echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL"
           git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL
           cd kogito-runtimes
-          mvn clean install -B -Dquickly -DskipTests -DskipITs -pl 'kogito-codegen-integration-tests'
+          mvn clean install -B -Dquickly -DskipTests -DskipITs -pl '!kogito-codegen-integration-tests'
           cd ..
           rm -rf kogito-runtimes
           echo "::endgroup::"
