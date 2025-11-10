@@ -15,6 +15,7 @@ jobs:
       DROOLS_REPO_URL: "https://github.com/kiegroup/drools"
       KOGITO_RUNTIMES_REPO_URL: "https://github.com/kiegroup/kogito-runtimes"
       KOGITO_APPS_REPO_URL: "https://github.com/kiegroup/kogito-apps"
+      KIE_TOOLS_REPO_URL: "https://github.com/kubesmarts/kie-tools"
       DEPS_BRANCHNAME: "9.104.x-prod"
       NIGHTLY: "true"
       NIGHTLY_DEPLOY_FOLDER: "/home/runner/.m2/repository"
@@ -61,6 +62,15 @@ jobs:
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
           rm -rf kogito-apps
+          echo "::endgroup::"
+
+           echo "::group::Cloning kie-tools $DEPS_BRANCHNAME branch..."
+          echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KIE_TOOLS_REPO_URL"
+          git clone --depth 1 --branch $DEPS_BRANCHNAME $KIE_TOOLS_REPO_URL
+          cd kie-tools
+          mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
+          cd ..
+          rm -rf kie-tools
           echo "::endgroup::"
 
       - name: Build apps-maven-builder
