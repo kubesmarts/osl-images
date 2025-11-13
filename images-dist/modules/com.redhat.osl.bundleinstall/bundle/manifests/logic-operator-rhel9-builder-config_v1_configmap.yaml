@@ -30,4 +30,4 @@ kind: ConfigMap
 metadata:
   labels:
     app.kubernetes.io/name: sonataflow-operator
-  name: logic-operator-rhel9-builder-config
+  name: logic-operator-builder-config
