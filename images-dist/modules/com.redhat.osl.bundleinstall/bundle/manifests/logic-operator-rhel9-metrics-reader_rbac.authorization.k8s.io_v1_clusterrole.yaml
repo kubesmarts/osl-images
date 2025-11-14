@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app.kubernetes.io/name: sonataflow-operator
-  name: logic-operator-rhel9-metrics-reader
+  name: logic-operator-metrics-reader
 rules:
 - nonResourceURLs:
   - /metrics
