@@ -138,7 +138,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/kubesmarts/kie-tools
     support: Red Hat
-  name: logic-operator-rhel9.v1.37.0
+  name: logic-operator.v1.37.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -700,11 +700,11 @@ spec:
           - get
           - list
           - watch
-        serviceAccountName: logic-operator-rhel9-controller-manager
+        serviceAccountName: logic-operator-controller-manager
       deployments:
       - label:
           app.kubernetes.io/name: sonataflow-operator
-        name: logic-operator-rhel9-controller-manager
+        name: logic-operator-controller-manager
         spec:
           replicas: 1
           selector:
@@ -805,11 +805,11 @@ spec:
                     type: RuntimeDefault
               securityContext:
                 runAsNonRoot: true
-              serviceAccountName: logic-operator-rhel9-controller-manager
+              serviceAccountName: logic-operator-controller-manager
               terminationGracePeriodSeconds: 10
               volumes:
               - configMap:
-                  name: logic-operator-rhel9-controllers-config
+                  name: logic-operator-controllers-config
                 name: controllers-config
       permissions:
       - rules:
@@ -844,7 +844,7 @@ spec:
           verbs:
           - create
           - patch
-        serviceAccountName: logic-operator-rhel9-controller-manager
+        serviceAccountName: logic-operator-controller-manager
     strategy: deployment
   installModes:
   - supported: false
