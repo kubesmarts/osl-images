@@ -98,6 +98,7 @@ mvn -B ${MAVEN_OPTIONS} \
     -DprojectVersionId="1.0.0-SNAPSHOT" \
     -DplatformVersion="${quarkus_platform_version}" \
     -Dextensions="${quarkus_extensions}" \
+    -DquarkusRegistryClient=false \
     "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":create
 
 # Fix as we cannot rely on Quarkus platform
