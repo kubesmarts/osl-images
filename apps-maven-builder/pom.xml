@@ -55,7 +55,7 @@
         <build.quarkusapp.argument.quarkus-extensions-extra-deps>com.aayushatharva.brotli4j:native-linux-aarch64:${version.brotli4j}</build.quarkusapp.argument.quarkus-extensions-extra-deps>
         <!-- End of block of plugins and dependencies that will be given to build-quarkus-app.sh script-->
 
-        <version.exec-maven-plugin>3.5.1</version.exec-maven-plugin>
+        <version.exec-maven-plugin>3.6.3</version.exec-maven-plugin>
         <version.build-helper-maven-plugin>3.6.1</version.build-helper-maven-plugin>
     </properties>
 
