@@ -16,7 +16,7 @@ jobs:
       KOGITO_RUNTIMES_REPO_URL: "https://github.com/kiegroup/kogito-runtimes"
       KOGITO_APPS_REPO_URL: "https://github.com/kiegroup/kogito-apps"
       KIE_TOOLS_REPO_URL: "https://github.com/kubesmarts/kie-tools"
-      DEPS_BRANCHNAME: "999-SNAPSHOT"
+      DEPS_BRANCHNAME: "main"
       NIGHTLY: "true"
       NIGHTLY_DEPLOY_FOLDER: "/home/runner/.m2/repository"
     steps:
