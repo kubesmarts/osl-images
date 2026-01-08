@@ -7,7 +7,7 @@
     <version>999-SNAPSHOT</version>
 
     <name>OSL image build artifacts</name>
-    <description>Maven project to build a Quarkus App used by OSL images</description>
+    <description>Maven project to build a Quarkus Applications used by OSL images</description>
     <packaging>pom</packaging>
 
     <organization>
