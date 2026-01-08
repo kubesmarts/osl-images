@@ -71,6 +71,9 @@ jobs:
           echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KIE_TOOLS_REPO_URL"
           git clone --depth 1 --branch $DEPS_BRANCHNAME $KIE_TOOLS_REPO_URL
           cd kie-tools
+          mkdir ./packages/maven-base/.mvn
+          echo "-Dversion.org.kie.kogito=999-SNAPSHOT" > "./packages/maven-base/.mvn/maven.config"
+          echo "--no-snapshot-updates" >> "./packages/maven-base/.mvn/maven.config"
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
           rm -rf kie-tools
