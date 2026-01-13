@@ -20,6 +20,12 @@ jobs:
       NIGHTLY: "true"
       NIGHTLY_DEPLOY_FOLDER: "/home/runner/.m2/repository"
     steps:
+      - name: "Remove big packages to free space on the VM"
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/local/.ghcup/
+    
       - name: "Checkout Repository"
         uses: actions/checkout@v6
 
