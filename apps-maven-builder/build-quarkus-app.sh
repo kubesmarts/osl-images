@@ -32,6 +32,16 @@
 set -e
 set -o pipefail
 
+echo "Starting build-quarkus-apps.sh with the following script params:"
+echo "image_name: ${1}"
+echo "quarkus_platform_groupid: ${2}"
+echo "quarkus_platform_version: ${3}"
+echo "kogito_version: ${4}"
+echo "maven_plugins_gav: ${5}"
+echo "properties_with_versions: ${6}"
+echo "quarkus_extensions_extra_deps: ${7}"
+echo "quarkus_version: ${8}"
+
 # Read entries before sourcing
 image_name="${1}"
 quarkus_platform_groupid="${2}"
