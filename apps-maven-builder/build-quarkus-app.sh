@@ -88,6 +88,14 @@ if [ "${NIGHTLY}" = "true" ]; then
     cp -rp ${NIGHTLY_DEPLOY_FOLDER}/* ${mvn_local_repo}
 fi
 
+# Setup the quarkus registries before creating the application
+mkdir -p "${build_target_dir}/.quarkus"
+cat > "${build_target_dir}/.quarkus/config.yaml" <<EOF
+registries:
+  - registry.quarkus.redhat.com
+  - registry.quarkus.io
+EOF
+
 set -x
 echo "Create quarkus project to path ${build_target_dir}"
 cd ${build_target_dir}
