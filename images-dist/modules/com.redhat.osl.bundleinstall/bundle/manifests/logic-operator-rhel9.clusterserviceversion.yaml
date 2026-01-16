@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2025-10-20T15:50:42Z"
+    createdAt: "2026-01-16T12:30:25Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow
       applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
@@ -723,6 +723,11 @@ spec:
                 - --health-probe-bind-address=:8081
                 - --metrics-bind-address=127.0.0.1:8080
                 - --leader-elect
+                - --lease-duration=60s
+                - --renew-deadline=40s
+                - --retry-period=15s
+                - --qps=50
+                - --burst=100
                 - --v=0
                 command:
                 - /usr/local/bin/manager
