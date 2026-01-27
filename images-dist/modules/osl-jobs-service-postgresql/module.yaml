@@ -18,7 +18,7 @@
 #
 schema_version: 1
 name: com.redhat.osl.jobs-service-postgresql
-version: "1.37.0"
+version: "1.37.1"
 
 artifacts:
   - name: jobs-service-postgresql-image-build.zip

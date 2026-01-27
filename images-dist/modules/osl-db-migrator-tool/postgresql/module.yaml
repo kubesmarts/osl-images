@@ -18,7 +18,7 @@
 #
 schema_version: 1
 name: com.redhat.osl.db-migrator-tool
-version: "1.37.0"
+version: "1.37.1"
 
 artifacts:
   - name: db-migrator-tool-image-build.zip

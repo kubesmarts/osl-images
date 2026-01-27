@@ -138,7 +138,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/kubesmarts/kie-tools
     support: Red Hat
-  name: logic-operator.v1.37.0
+  name: logic-operator.v1.37.1
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -873,4 +873,4 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  version: 1.37.0
+  version: 1.37.1
