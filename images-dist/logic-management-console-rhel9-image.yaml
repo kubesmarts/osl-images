@@ -18,7 +18,7 @@
 #
 name: "openshift-serverless-1/logic-management-console-rhel9"
 from: "registry.access.redhat.com/ubi9/httpd-24:latest"
-version: "1.37.0"
+version: "1.37.1"
 description: "OpenShift Serverless Logic Management Console Image"
 
 labels:

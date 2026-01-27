@@ -15,7 +15,7 @@
 schema_version: 1
 name: "openshift-serverless-1/logic-operator-bundle"
 description: "OpenShift Serverless Logic Operator Bundle"
-version: "1.37.0"
+version: "1.37.1"
 from: "scratch"
 
 labels:
