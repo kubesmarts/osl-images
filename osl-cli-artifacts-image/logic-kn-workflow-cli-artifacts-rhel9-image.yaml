@@ -13,7 +13,7 @@
 # limitations under the License.
 
 - name: "packager"
-  version: "1.37"
+  version: "1.37.1"
   from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   modules:
     repositories:
@@ -22,7 +22,7 @@
       - name: com.redhat.osl.cli.packager
 
 - name: "openshift-serverless-1/logic-kn-workflow-cli-artifacts-rhel9"
-  version: "1.37"
+  version: "1.37.1"
   description: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
   from: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   labels:
