@@ -31,7 +31,8 @@
     - name: name
       value: "openshift-serverless-1/kn-workflow-cli-artifacts-rhel9"
     - name: version
-      value: "1.37"
+- name: version
+value: "1.37.1"
     - name: summary
       value: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
     - name: description
