@@ -890,5 +890,5 @@ spec:
     name: devmode
   - image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
     name: kube-rbac-proxy
-  replaces: logic-operator-rhel8.v0.0.0
+  replaces: logic-operator-rhel9.v0.0.0
   version: 0.0.0
