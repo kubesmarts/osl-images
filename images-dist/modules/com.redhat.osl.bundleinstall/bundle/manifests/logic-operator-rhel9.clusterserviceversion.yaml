@@ -874,4 +874,4 @@ spec:
   provider:
     name: Red Hat
   replaces: logic-operator.v1.37.0
-  version: 1.37.1
+  version: 1.37.2
