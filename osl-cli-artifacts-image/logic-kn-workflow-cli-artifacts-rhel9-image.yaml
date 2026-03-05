@@ -20,7 +20,6 @@
       - path: modules
     install:
       - name: com.redhat.osl.cli.packager
-
 - name: "openshift-serverless-1/logic-kn-workflow-cli-artifacts-rhel9"
   version: "1.38"
   description: "Red Hat OpenShift Serverless Logic 1 kn-workflow CLI artifacts"
@@ -51,20 +50,18 @@
       - name: com.redhat.osl.cli.artifacts
   run:
     user: 65532
-
   packages:
     manager: microdnf
     content_sets_file: content_sets.yaml
-
   osbs:
     configuration:
       container:
         platforms:
           only:
-          - x86_64
-          - aarch64
+            - x86_64
+            - aarch64
         compose:
           pulp_repos: true
     repository:
       name: containers/openshift-serverless-1-logic-kn-workflow-cli-artifacts
-      branch: openshift-serverless-1.38-rhel-9
+      branch: update me
