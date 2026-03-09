@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2026-02-20T11:33:30Z"
+    createdAt: "2026-03-09T16:23:15Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow
       applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
@@ -481,6 +481,14 @@ spec:
           - update
           - watch
         - apiGroups:
+          - autoscaling
+          resources:
+          - horizontalpodautoscalers
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
           - batch
           resources:
           - jobs
@@ -501,6 +509,18 @@ spec:
           - delete
           - get
           - list
+          - update
+          - watch
+        - apiGroups:
+          - policy
+          resources:
+          - poddisruptionbudgets
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
           - update
           - watch
         - apiGroups:
@@ -541,6 +561,7 @@ spec:
           - sonataflowbuilds/status
           - sonataflowclusterplatforms/status
           - sonataflowplatforms/status
+          - sonataflows/scale
           - sonataflows/status
           verbs:
           - get
