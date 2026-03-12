@@ -17,20 +17,18 @@
   version: "1.38"
   from: "registry.access.redhat.com/ubi9/go-toolset:1.24"
   description: "Golang builder image for the Red Hat OpenShift Serverless Logic Operator"
-
   modules:
     repositories:
       - path: modules
     install:
       - name: com.redhat.osl.builder
-
   osbs:
     configuration:
       container:
         image_build_method: imagebuilder
         remote_source:
           repo: https://github.com/kubesmarts/kie-tools
-          ref: 7aea06c5e112c3236d8ae86bc5ca0f85fc59917b
+          ref: 7056a385f8f00a9ee5ab782815d9bc06fe50b54b
           pkg_managers:
             - gomod
           packages:
@@ -41,12 +39,10 @@
             - x86_64
             - ppc64le
             - aarch64
-
 - name: "openshift-serverless-1/logic-rhel9-operator"
   version: "1.38"
   from: "registry.access.redhat.com/ubi9/ubi-micro:latest"
   description: "Runtime Image for the Red Hat OpenShift Serverless Logic Operator"
-
   labels:
     - name: maintainer
       value: bsig-cloud@redhat.com
@@ -58,22 +54,18 @@
       value: Red Hat OpenShift Serverless Logic Operator
     - name: io.openshift.tags
       value: osl,logic,sonataflow,serverless,workflow,operator
-
   artifacts:
     - path: /workspace/manager
       image: operator-builder
       dest: /usr/local/bin
       name: manager
-
   packages:
     content_sets_file: content_sets.yaml
-
   osbs:
     extra_dir: osbs-extra
     repository:
       name: containers/openshift-serverless-1-logic-operator
       #CI prod nightly set this to openshift-serverless-nightly-rhel-9
-      branch: openshift-serverless-1.37-rhel-9
-
+      branch: openshift-serverless-1.38-rhel-9
   run:
     user: "1001"
