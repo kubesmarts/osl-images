@@ -18,7 +18,7 @@
 #
 schema_version: 1
 name: "openshift-serverless-1/logic-swf-builder-rhel9"
-version: "main"
+version: "1.38.0"
 from: "registry.access.redhat.com/ubi9/openjdk-17:1.24"
 description: "Red Hat build of Runtime image for Kogito Serverless Workflow builder with Quarkus extensions libraries preinstalled"
 
@@ -28,9 +28,9 @@ labels:
   - name: "io.openshift.s2i.destination"
     value: "/tmp"
   - name: "io.quarkus.platform.version"
-    value: "3.27.2"
+    value: "3.27.2.redhat-00002"
   - name: "org.kie.kogito.version"
-    value: "999-SNAPSHOT"
+    value: "9.105.0"
   - name: "com.redhat.component"
     value: "openshift-serverless-1-logic-swf-builder-rhel9-container"
   - name: "maintainer"
