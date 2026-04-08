@@ -808,7 +808,7 @@ spec:
                 - --v=0
                 env:
                 - name: RELATED_IMAGE_KUBE_RBAC_PROXY
-                  value: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+                  value: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
                 image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
                 name: kube-rbac-proxy
                 ports:
@@ -914,7 +914,7 @@ spec:
     name: base-builder
   - image: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:92157cc12a3866e1deb70738142befe579f83d98f4c20bf0d5746d0680394437
     name: devmode
-  - image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+  - image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
     name: kube-rbac-proxy
   replaces: logic-operator.v0.0.0
   version: 0.0.0
