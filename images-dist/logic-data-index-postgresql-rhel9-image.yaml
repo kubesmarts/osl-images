@@ -17,12 +17,10 @@
 # under the License.
 #
 schema_version: 1
-
 name: "openshift-serverless-1/logic-data-index-postgresql-rhel9"
 version: "1.38.0"
 from: "registry.access.redhat.com/ubi9/openjdk-17-runtime:1.24"
 description: "Red Hat build of Runtime image for Kogito Data Index Service for PostgreSQL persistence provider"
-
 labels:
   - name: "com.redhat.component"
     value: "openshift-serverless-1-logic-data-index-postgresql-rhel9-container"
@@ -37,13 +35,11 @@ labels:
   - name: "io.openshift.expose-services"
     value: "8080:http"
   - name: "org.kie.kogito.version"
-    value: "9.105.0.redhat-00002"
-
+    value: "9.105.0.redhat-00003"
 envs:
   - name: "SCRIPT_DEBUG"
     example: "true"
     description: "If set to true, ensures that the bash scripts are executed with the -x option, printing the commands and their arguments as they are executed. Also debug JVM initialization."
-
 modules:
   repositories:
     - path: modules
@@ -57,11 +53,9 @@ modules:
     - name: org.kie.kogito.dataindex.common
     - name: org.kie.kogito.security.custom.truststores
     - name: com.redhat.osl.pkg-update
-
 packages:
   manager: microdnf
   content_sets_file: content_sets.yaml
-
 osbs:
   configuration:
     container:
@@ -76,10 +70,8 @@ osbs:
   repository:
     name: containers/openshift-serverless-1-logic-data-index-postgresql
     branch: openshift-serverless-main-rhel-9
-
 ports:
   - value: 8080
-
 run:
   workdir: "/home/kogito"
   user: 1001
