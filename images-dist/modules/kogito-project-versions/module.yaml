@@ -25,13 +25,13 @@ envs:
     value: "999-SNAPSHOT"
     description: Defines the Kogito version to be used by the builder images. Not intended to be changed by end user.
   - name: "QUARKUS_PLATFORM_GROUPID"
-    value: "io.quarkus.platform"
+    value: "io.quarkus.platformxxx"
     description: Defines the Quarkus Platform groupId to be used by the builder images. Not intended to be changed by end user.
   - name: "QUARKUS_PLATFORM_VERSION"
-    value: "3.27.2"
+    value: "3.27.2xxx"
     description: Defines the Quarkus Platform version to be used by the builder images. Not intended to be changed by end user.
   - name: "QUARKUS_VERSION"
-    value: "3.27.2"
+    value: "3.27.2xxx"
     description: Defines the Quarkus version to be used by the builder images dependencies in cases where QUARKUS_PLATFORM_VERSION needs to be overridden. Not intended to be changed by end user.
   - name: "SONATAFLOW_QUARKUS_DEVUI_VERSION"
     value: "999-SNAPSHOT"
