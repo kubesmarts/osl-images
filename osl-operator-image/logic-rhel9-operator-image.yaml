@@ -66,6 +66,6 @@
     repository:
       name: containers/openshift-serverless-1-logic-operator
       #CI prod nightly set this to openshift-serverless-nightly-rhel-9
-      branch: openshift-serverless-1.37-rhel-9
+      branch: openshift-serverless-1.38-rhel-9
   run:
     user: "1001"
