@@ -916,5 +916,5 @@ spec:
     name: devmode
   - image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
     name: kube-rbac-proxy
-  replaces: logic-operator-rhel9.v1.37.2
+  replaces: logic-operator.v1.37.2
   version: 1.38.0
