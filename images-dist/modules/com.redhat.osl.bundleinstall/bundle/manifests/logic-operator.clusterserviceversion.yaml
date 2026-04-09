@@ -758,19 +758,19 @@ spec:
                     fieldRef:
                       fieldPath: metadata.namespace
                 - name: RELATED_IMAGE_JOBS_SERVICE_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:f95c0b34c31dc2a6a2992e38709b81abe483a600a94a45af0446fb7e9af613f5
                 - name: RELATED_IMAGE_JOBS_SERVICE_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:f6df9c25e21e0cf62bcd06979c2d08f2a48caaf8a60ed96d4d6ef601434f8b97
                 - name: RELATED_IMAGE_DATA_INDEX_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:ebc2e6a1120335927cdfb9a75f1c7083b48a985a0def5a0622f2df41ad47de03
                 - name: RELATED_IMAGE_DATA_INDEX_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:cab8597960cdf286ac1a927b40d50e0cee1c4ab48ce25e9bb58552beda0d2d28
                 - name: RELATED_IMAGE_DB_MIGRATOR_TOOL
-                  value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:d25e00738de6d5547f9d60ef294d6171195c92e990cd3b3c3e0f52631aba3ec4
                 - name: RELATED_IMAGE_BASE_BUILDER
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:91b69dd012a831bae5f6040c16854d600e993093fdc71513ba40bb88e917b41c
                 - name: RELATED_IMAGE_DEVMODE
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:main
+                  value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:92157cc12a3866e1deb70738142befe579f83d98f4c20bf0d5746d0680394437
                 image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator:main
                 livenessProbe:
                   httpGet:
@@ -808,7 +808,7 @@ spec:
                 - --v=0
                 env:
                 - name: RELATED_IMAGE_KUBE_RBAC_PROXY
-                  value: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+                  value: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
                 image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
                 name: kube-rbac-proxy
                 ports:
@@ -891,7 +891,7 @@ spec:
   - name: Documentation
     url: https://docs.openshift.com/serverless/
   - name: Source Repository
-    url: https://github.com/kiegroup/kogito-serverless-operator/
+    url: https://github.com/kubesmarts/kie-tools
   maintainers:
   - email: serverless-logic-team@redhat.com
     name: Red Hat
@@ -900,21 +900,21 @@ spec:
   provider:
     name: Red Hat
   relatedImages:
-  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9@sha256:f95c0b34c31dc2a6a2992e38709b81abe483a600a94a45af0446fb7e9af613f5
     name: jobs-service-postgresql
-  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9@sha256:f6df9c25e21e0cf62bcd06979c2d08f2a48caaf8a60ed96d4d6ef601434f8b97
     name: jobs-service-ephemeral
-  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9@sha256:ebc2e6a1120335927cdfb9a75f1c7083b48a985a0def5a0622f2df41ad47de03
     name: data-index-postgresql
-  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9@sha256:cab8597960cdf286ac1a927b40d50e0cee1c4ab48ce25e9bb58552beda0d2d28
     name: data-index-ephemeral
-  - image: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9@sha256:d25e00738de6d5547f9d60ef294d6171195c92e990cd3b3c3e0f52631aba3ec4
     name: db-migrator-tool
-  - image: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:91b69dd012a831bae5f6040c16854d600e993093fdc71513ba40bb88e917b41c
     name: base-builder
-  - image: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:main
+  - image: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:92157cc12a3866e1deb70738142befe579f83d98f4c20bf0d5746d0680394437
     name: devmode
-  - image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+  - image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
     name: kube-rbac-proxy
-  replaces: logic-operator.v0.0.0
-  version: 0.0.0
+  replaces: logic-operator.v1.37.2
+  version: 1.38.0
