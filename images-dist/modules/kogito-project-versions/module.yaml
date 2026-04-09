@@ -18,9 +18,8 @@
 #
 schema_version: 1
 name: org.kie.kogito.project.versions
-version: "main"
+version: "1.38.0"
 description: "Kogito Project versions information"
-
 envs:
   - name: "KOGITO_VERSION"
     value: "999-SNAPSHOT"

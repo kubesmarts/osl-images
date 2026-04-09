@@ -18,16 +18,12 @@
 #
 schema_version: 1
 name: org.kie.sonataflow.common.quarkus.registry
-version: "main"
+version: "1.38.0"
 description: "SonataFlow Images Quarkus Registry Module"
-
 envs:
   - name: QUARKUS_REGISTRY_CONFIG_PATH
     description: >-
-      Optional path to a custom Quarkus registry configuration file inside the image.
-      If set, the builder/devmode will copy this file to $HOME/.quarkus/config.yaml before the build begins.
-      Useful for overriding the default registry behavior in offline or custom registry scenarios.
+      Optional path to a custom Quarkus registry configuration file inside the image. If set, the builder/devmode will copy this file to $HOME/.quarkus/config.yaml before the build begins. Useful for overriding the default registry behavior in offline or custom registry scenarios.
     example: ./resources/.quarkus/config.yaml"
-
 execute:
   - script: configure.sh

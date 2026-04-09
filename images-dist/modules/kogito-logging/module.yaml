@@ -18,7 +18,6 @@
 #
 schema_version: 1
 name: org.kie.kogito.logging
-version: "main"
-
+version: "1.38.0"
 execute:
   - script: configure
