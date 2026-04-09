@@ -17,12 +17,10 @@
 # under the License.
 #
 schema_version: 1
-
 name: "openshift-serverless-1/logic-data-index-ephemeral-rhel9"
 version: "main"
 from: "registry.access.redhat.com/ubi9/openjdk-17-runtime:1.23"
 description: "Red Hat build of Runtime image for Kogito Data Index Service for ephemeral PostgreSQL persistence provider"
-
 labels:
   - name: "com.redhat.component"
     value: "openshift-serverless-1-logic-data-index-ephemeral-rhel9-container"
@@ -37,8 +35,7 @@ labels:
   - name: "io.openshift.expose-services"
     value: "8080:http"
   - name: "org.kie.kogito.version"
-    value: "999-SNAPSHOT"
-
+    value: "9.105.0"
 envs:
   - name: "SCRIPT_DEBUG"
     example: "true"
@@ -46,7 +43,6 @@ envs:
   - name: "KOGITO_DATA_INDEX_QUARKUS_PROFILE"
     value: "http-events-support"
     description: "Allows to change the event connection type. The possible values are :`kafka-events-support` or `http-events-support`(default)"
-
 modules:
   repositories:
     - path: modules
@@ -60,11 +56,9 @@ modules:
     - name: org.kie.kogito.dataindex.common
     - name: org.kie.kogito.security.custom.truststores
     - name: com.redhat.osl.pkg-update
-
 packages:
   manager: microdnf
   content_sets_file: content_sets.yaml
-
 osbs:
   configuration:
     container:
@@ -79,10 +73,8 @@ osbs:
   repository:
     name: containers/openshift-serverless-1-logic-data-index-ephemeral
     branch: openshift-serverless-main-rhel-9
-
 ports:
   - value: 8080
-
 run:
   workdir: "/home/kogito"
   user: 1001
