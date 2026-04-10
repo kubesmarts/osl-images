@@ -22,7 +22,7 @@ labels:
   - name: maintainer
     value: bsig-cloud@redhat.com
   - name: com.redhat.component
-    value: openshift-serverless-1-logic-operator-bundle-container
+    value: openshift-serverless-1-logic-rhel9-operator-bundle-container
   - name: io.k8s.description
     value: Operator Bundle for deploying OpenShift Serverless Logic Operator
   - name: io.k8s.display-name
