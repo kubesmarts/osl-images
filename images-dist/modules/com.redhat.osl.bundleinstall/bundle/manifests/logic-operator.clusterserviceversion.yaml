@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2026-03-10T12:25:21Z"
+    createdAt: "2026-05-27T07:05:37Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow
       applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
@@ -808,7 +808,7 @@ spec:
                 - --v=0
                 env:
                 - name: RELATED_IMAGE_KUBE_RBAC_PROXY
-                  value: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+                  value: quay.io/brancz/kube-rbac-proxy:v0.13.1
                 image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
                 name: kube-rbac-proxy
                 ports:
@@ -914,7 +914,7 @@ spec:
     name: base-builder
   - image: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:main
     name: devmode
-  - image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+  - image: quay.io/brancz/kube-rbac-proxy:v0.13.1
     name: kube-rbac-proxy
   replaces: logic-operator.v0.0.0
   version: 0.0.0
