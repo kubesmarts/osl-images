@@ -15,7 +15,7 @@
 - schema_version: 1
   name: "operator-builder"
   version: "999.0.0.main"
-  from: "registry.access.redhat.com/ubi9/go-toolset:1.25"
+  from: "registry.access.redhat.com/ubi9/go-toolset:1.26"
   description: "Golang builder image for the Red Hat OpenShift Serverless Logic Operator"
 
   modules:
