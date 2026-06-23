@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.redhat.osl</groupId>
         <artifactId>osl-image-build-artifacts-parent</artifactId>
-        <version>111-SNAPSHOT</version>
+        <version>9.106.0</version>
     </parent>
 
     <artifactId>osl-builder-maven-repository</artifactId>
