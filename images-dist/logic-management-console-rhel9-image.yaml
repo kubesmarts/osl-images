@@ -20,12 +20,11 @@ name: "openshift-serverless-1/logic-management-console-rhel9"
 from: "registry.access.redhat.com/ubi9/httpd-24:latest"
 version: "main"
 description: "OpenShift Serverless Logic Management Console Image"
-
 labels:
   - name: "io.quarkus.platform.version"
     value: "3.27.4"
   - name: "org.kie.kogito.version"
-    value: "111-SNAPSHOT"
+    value: "9.106.0"
   - name: "maintainer"
     value: "Red Hat <serverless-logic-team@redhat.com>"
   - name: "io.k8s.description"
@@ -38,7 +37,6 @@ labels:
     value: "8080:http"
   - name: "com.redhat.component"
     value: "openshift-serverless-1-logic-management-console-rhel9-container"
-
 modules:
   repositories:
     - path: modules
@@ -47,25 +45,20 @@ modules:
     - name: org.kie.kogito.project.versions
     - name: com.redhat.osl.management.console
     - name: com.redhat.osl.pkg-update
-
 ports:
   - value: 8080
-
 envs:
   - name: SONATAFLOW_MANAGEMENT_CONSOLE_KOGITO_ENV_MODE
     value: PROD
   - name: SUMMARY
     value: "OpenShift Serverless Logic Management Console"
-
 run:
   workdir: "/home/kogito/management-console"
   user: 1001
   cmd:
     - "/home/kogito/management-console/launch/entrypoint.sh"
-
 packages:
   content_sets_file: content_sets.yaml
-
 osbs:
   configuration:
     container:
