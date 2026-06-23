@@ -18,9 +18,8 @@
 #
 schema_version: 1
 name: org.kie.sonataflow.common.scripts
-version: "main"
+version: "1.39.0"
 description: "SonataFlow images common scripts"
-
 envs:
   - name: PROJECT_GROUP_ID
     value: "org.acme"
@@ -33,8 +32,6 @@ envs:
     description: Please do not change. To change only if you plan to use the ${KOGITO_HOME}/launch/create-app.sh
   - name: QUARKUS_ADD_EXTENSION_ARGS
     description: To use only if you plan to use the ${KOGITO_HOME}/launch/add-extension.sh
-
 # Requires org.kie.kogito.maven.common module
-
 execute:
   - script: configure.sh

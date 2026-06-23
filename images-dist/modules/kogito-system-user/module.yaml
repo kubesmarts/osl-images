@@ -18,11 +18,9 @@
 #
 schema_version: 1
 name: org.kie.kogito.system.user
-version: "main"
-
+version: "1.39.0"
 execute:
   - script: add-user
-
 envs:
   - name: "KOGITO_HOME"
     value: "/home/kogito"

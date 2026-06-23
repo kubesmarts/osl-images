@@ -13,9 +13,8 @@
 # limitations under the License.
 
 name: com.redhat.osl.bundleinstall
-version: "main"
+version: "1.39.0"
 description: Copy the bund files to the target image
-
 artifacts:
   - name: manifests
     path: "bundle/manifests"
