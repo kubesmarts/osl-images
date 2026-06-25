@@ -25,7 +25,7 @@ labels:
   - name: "io.quarkus.platform.version"
     value: "3.27.4"
   - name: "org.kie.kogito.version"
-    value: "9.106.0"
+    value: "9.106.0.temporary-redhat-00002"
   - name: "io.k8s.description"
     value: "Red Hat build of Kogito Serverless Workflow development mode image with Quarkus extensions libraries preinstalled."
   - name: "io.k8s.display-name"
