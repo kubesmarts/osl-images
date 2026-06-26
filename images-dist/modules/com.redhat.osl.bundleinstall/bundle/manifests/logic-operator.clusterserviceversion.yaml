@@ -121,8 +121,7 @@ metadata:
     categories: Application Runtime
     certified: "false"
     createdAt: "2026-03-10T12:25:21Z"
-    description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow
-      applications based on the CNCF Serverless Workflow specification
+    description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
     features.operators.openshift.io/fips-compliant: "false"
     features.operators.openshift.io/proxy-aware: "false"
@@ -131,8 +130,7 @@ metadata:
     features.operators.openshift.io/token-auth-azure: "false"
     features.operators.openshift.io/token-auth-gcp: "false"
     operatorframework.io/suggested-namespace: openshift-serverless-logic
-    operators.openshift.io/valid-subscription: '["OpenShift Container Platform", "OpenShift
-      Platform Plus"]'
+    operators.openshift.io/valid-subscription: '["OpenShift Container Platform", "OpenShift Platform Plus"]'
     operators.operatorframework.io/builder: operator-sdk-v1.35.0
     operators.operatorframework.io/internal-objects: '["sonataflowbuilds.sonataflow.org"]'
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
@@ -144,757 +142,722 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
-    - description: SonataFlowBuild is an internal custom resource to control workflow
-        build instances in the target platform
-      displayName: Sonata Flow Build
-      kind: SonataFlowBuild
-      name: sonataflowbuilds.sonataflow.org
-      resources:
-      - kind: BuildConfig
-        name: An Openshift Build Config
-        version: build.openshift.io/v1
-      specDescriptors:
-      - description: 'Arguments lists the command line arguments to send to the internal
-          builder command. Depending on the build method you might set this attribute
-          instead of BuildArgs. For example: ".spec.arguments=verbose=3". Please see
-          the SonataFlow guides.'
-        displayName: Arguments
-        path: arguments
-      - description: Optional build arguments that can be set to the internal build
-          (e.g. Docker ARG)
-        displayName: BuildArgs
-        path: buildArgs
-      - description: Optional environment variables to add to the internal build
-        displayName: Envs
-        path: envs
-      - description: Resources optional compute resource requirements for the builder
-        displayName: Resources
-        path: resources
-      - description: Timeout defines the Build maximum execution duration. The Build
-          deadline is set to the Build start time plus the Timeout duration. If the
-          Build deadline is exceeded, the Build context is canceled, and its phase
-          set to BuildPhaseFailed.
-        displayName: Timeout
-        path: timeout
-      statusDescriptors:
-      - description: BuildPhase Current phase of the build
-        displayName: BuildPhase
-        path: buildPhase
-      - description: Error Last error found during build
-        displayName: Error
-        path: error
-      - description: ImageTag The final image tag produced by this build instance
-        displayName: ImageTag
-        path: imageTag
-      - description: InnerBuild is a reference to an internal build object, which
-          can be anything known only to internal builders.
-        displayName: InnerBuild
-        path: innerBuild
-      version: v1alpha08
-    - description: SonataFlowClusterPlatform is the Schema for the sonataflowclusterplatforms
-        API
-      displayName: Sonata Flow Cluster Platform
-      kind: SonataFlowClusterPlatform
-      name: sonataflowclusterplatforms.sonataflow.org
-      resources:
-      - kind: SonataFlowPlatform
-        name: A SonataFlow Platform
-        version: sonataflow.org/v1alpha08
-      specDescriptors:
-      - description: Capabilities defines which platform capabilities should be applied
-          cluster-wide. If nil, defaults to `capabilities.workflows["services"]`
-        displayName: Capabilities
-        path: capabilities
-      - description: PlatformRef defines which existing SonataFlowPlatform's supporting
-          services should be used cluster-wide.
-        displayName: PlatformRef
-        path: platformRef
-      - description: Name of the SonataFlowPlatform
-        displayName: Platform_Name
-        path: platformRef.name
-      - description: Namespace of the SonataFlowPlatform
-        displayName: Platform_NS
-        path: platformRef.namespace
-      statusDescriptors:
-      - description: Version the operator version controlling this ClusterPlatform
-        displayName: version
-        path: version
-      version: v1alpha08
-    - description: SonataFlowPlatform is the descriptor for the workflow platform
-        infrastructure.
-      displayName: Sonata Flow Platform
-      kind: SonataFlowPlatform
-      name: sonataflowplatforms.sonataflow.org
-      resources:
-      - kind: Namespace
-        name: The Namespace controlled by the platform
-        version: v1
-      specDescriptors:
-      - description: Build Attributes for building workflows in the target platform
-        displayName: Build
-        path: build
-      - description: 'Arguments lists the command line arguments to send to the internal
-          builder command. Depending on the build method you might set this attribute
-          instead of BuildArgs. For example: ".spec.arguments=verbose=3". Please see
-          the SonataFlow guides.'
-        displayName: Arguments
-        path: build.template.arguments
-      - description: Optional build arguments that can be set to the internal build
-          (e.g. Docker ARG)
-        displayName: BuildArgs
-        path: build.template.buildArgs
-      - description: Optional environment variables to add to the internal build
-        displayName: Envs
-        path: build.template.envs
-      - description: Resources optional compute resource requirements for the builder
-        displayName: Resources
-        path: build.template.resources
-      - description: Timeout defines the Build maximum execution duration. The Build
-          deadline is set to the Build start time plus the Timeout duration. If the
-          Build deadline is exceeded, the Build context is canceled, and its phase
-          set to BuildPhaseFailed.
-        displayName: Timeout
-        path: build.template.timeout
-      - description: DevMode Attributes for running workflows in devmode (immutable,
-          no build required)
-        displayName: DevMode
-        path: devMode
-      - description: 'Services attributes for deploying supporting applications like
-          Data Index & Job Service. Only workflows without the `sonataflow.org/profile:
-          dev` annotation will be configured to use these service(s). Setting this
-          will override the use of any cluster-scoped services that might be defined
-          via `SonataFlowClusterPlatform`.'
-        displayName: Services
-        path: services
-      - description: PodTemplate describes the deployment details of this platform
-          service instance.
-        displayName: podTemplate
-        path: services.dataIndex.podTemplate
-      - description: PodTemplate describes the deployment details of this platform
-          service instance.
-        displayName: podTemplate
-        path: services.jobService.podTemplate
-      statusDescriptors:
-      - description: Cluster what kind of cluster you're running (ie, plain Kubernetes
-          or OpenShift)
-        displayName: cluster
-        path: cluster
-      - description: ClusterPlatformRef information related to the (optional) active
-          SonataFlowClusterPlatform
-        displayName: clusterPlatformRef
-        path: clusterPlatformRef
-      - description: Info generic information related to the build
-        displayName: info
-        path: info
-      - description: Version the operator version controlling this Platform
-        displayName: version
-        path: version
-      version: v1alpha08
-    - description: SonataFlow is the descriptor representation for a workflow application
-        based on the CNCF Serverless Workflow specification.
-      displayName: Sonata Flow
-      kind: SonataFlow
-      name: sonataflows.sonataflow.org
-      resources:
-      - kind: Deployment
-        name: A Deployment for the Flow
-        version: apps/v1
-      - kind: Service
-        name: A Knative Serving Service for the Flow
-        version: serving.knative.dev/v1
-      - kind: Service
-        name: A Service for the Flow
-        version: v1
-      - kind: SonataFlowBuild
-        name: A SonataFlow Build
-        version: sonataflow.org/v1alpha08
-      - kind: Route
-        name: An OpenShift Route for the Flow
-        version: route.openshift.io/v1
-      - kind: ConfigMap
-        name: The ConfigMaps with Flow definition and additional configuration files
-        version: v1
-      specDescriptors:
-      - description: Flow the workflow definition.
-        displayName: flow
-        path: flow
-      - description: PodTemplate describes the deployment details of this SonataFlow
-          instance.
-        displayName: podTemplate
-        path: podTemplate
-      - description: Resources workflow resources that are linked to this workflow
-          definition. For example, a collection of OpenAPI specification files.
-        displayName: resources
-        path: resources
-      - description: Sink describes the sinkBinding details of this SonataFlow instance.
-        displayName: sink
-        path: sink
-      statusDescriptors:
-      - description: Address is used as a part of Addressable interface (status.address.url)
-          for knative
-        displayName: address
-        path: address
-      - description: Endpoint is an externally accessible URL of the workflow
-        displayName: endpoint
-        path: endpoint
-      - displayName: lastTimeRecoverAttempt
-        path: lastTimeRecoverAttempt
-      - description: keeps track of how many failure recovers a given workflow had
-          so far
-        displayName: recoverFailureAttempts
-        path: recoverFailureAttempts
-      - description: Services displays which platform services are being used by this
-          workflow
-        displayName: services
-        path: services
-      version: v1alpha08
+      - description: SonataFlowBuild is an internal custom resource to control workflow build instances in the target platform
+        displayName: Sonata Flow Build
+        kind: SonataFlowBuild
+        name: sonataflowbuilds.sonataflow.org
+        resources:
+          - kind: BuildConfig
+            name: An Openshift Build Config
+            version: build.openshift.io/v1
+        specDescriptors:
+          - description: 'Arguments lists the command line arguments to send to the internal builder command. Depending on the build method you might set this attribute instead of BuildArgs. For example: ".spec.arguments=verbose=3". Please see the SonataFlow guides.'
+            displayName: Arguments
+            path: arguments
+          - description: Optional build arguments that can be set to the internal build (e.g. Docker ARG)
+            displayName: BuildArgs
+            path: buildArgs
+          - description: Optional environment variables to add to the internal build
+            displayName: Envs
+            path: envs
+          - description: Resources optional compute resource requirements for the builder
+            displayName: Resources
+            path: resources
+          - description: Timeout defines the Build maximum execution duration. The Build deadline is set to the Build start time plus the Timeout duration. If the Build deadline is exceeded, the Build context is canceled, and its phase set to BuildPhaseFailed.
+            displayName: Timeout
+            path: timeout
+        statusDescriptors:
+          - description: BuildPhase Current phase of the build
+            displayName: BuildPhase
+            path: buildPhase
+          - description: Error Last error found during build
+            displayName: Error
+            path: error
+          - description: ImageTag The final image tag produced by this build instance
+            displayName: ImageTag
+            path: imageTag
+          - description: InnerBuild is a reference to an internal build object, which can be anything known only to internal builders.
+            displayName: InnerBuild
+            path: innerBuild
+        version: v1alpha08
+      - description: SonataFlowClusterPlatform is the Schema for the sonataflowclusterplatforms API
+        displayName: Sonata Flow Cluster Platform
+        kind: SonataFlowClusterPlatform
+        name: sonataflowclusterplatforms.sonataflow.org
+        resources:
+          - kind: SonataFlowPlatform
+            name: A SonataFlow Platform
+            version: sonataflow.org/v1alpha08
+        specDescriptors:
+          - description: Capabilities defines which platform capabilities should be applied cluster-wide. If nil, defaults to `capabilities.workflows["services"]`
+            displayName: Capabilities
+            path: capabilities
+          - description: PlatformRef defines which existing SonataFlowPlatform's supporting services should be used cluster-wide.
+            displayName: PlatformRef
+            path: platformRef
+          - description: Name of the SonataFlowPlatform
+            displayName: Platform_Name
+            path: platformRef.name
+          - description: Namespace of the SonataFlowPlatform
+            displayName: Platform_NS
+            path: platformRef.namespace
+        statusDescriptors:
+          - description: Version the operator version controlling this ClusterPlatform
+            displayName: version
+            path: version
+        version: v1alpha08
+      - description: SonataFlowPlatform is the descriptor for the workflow platform infrastructure.
+        displayName: Sonata Flow Platform
+        kind: SonataFlowPlatform
+        name: sonataflowplatforms.sonataflow.org
+        resources:
+          - kind: Namespace
+            name: The Namespace controlled by the platform
+            version: v1
+        specDescriptors:
+          - description: Build Attributes for building workflows in the target platform
+            displayName: Build
+            path: build
+          - description: 'Arguments lists the command line arguments to send to the internal builder command. Depending on the build method you might set this attribute instead of BuildArgs. For example: ".spec.arguments=verbose=3". Please see the SonataFlow guides.'
+            displayName: Arguments
+            path: build.template.arguments
+          - description: Optional build arguments that can be set to the internal build (e.g. Docker ARG)
+            displayName: BuildArgs
+            path: build.template.buildArgs
+          - description: Optional environment variables to add to the internal build
+            displayName: Envs
+            path: build.template.envs
+          - description: Resources optional compute resource requirements for the builder
+            displayName: Resources
+            path: build.template.resources
+          - description: Timeout defines the Build maximum execution duration. The Build deadline is set to the Build start time plus the Timeout duration. If the Build deadline is exceeded, the Build context is canceled, and its phase set to BuildPhaseFailed.
+            displayName: Timeout
+            path: build.template.timeout
+          - description: DevMode Attributes for running workflows in devmode (immutable, no build required)
+            displayName: DevMode
+            path: devMode
+          - description: 'Services attributes for deploying supporting applications like Data Index & Job Service. Only workflows without the `sonataflow.org/profile: dev` annotation will be configured to use these service(s). Setting this will override the use of any cluster-scoped services that might be defined via `SonataFlowClusterPlatform`.'
+            displayName: Services
+            path: services
+          - description: PodTemplate describes the deployment details of this platform service instance.
+            displayName: podTemplate
+            path: services.dataIndex.podTemplate
+          - description: PodTemplate describes the deployment details of this platform service instance.
+            displayName: podTemplate
+            path: services.jobService.podTemplate
+        statusDescriptors:
+          - description: Cluster what kind of cluster you're running (ie, plain Kubernetes or OpenShift)
+            displayName: cluster
+            path: cluster
+          - description: ClusterPlatformRef information related to the (optional) active SonataFlowClusterPlatform
+            displayName: clusterPlatformRef
+            path: clusterPlatformRef
+          - description: Info generic information related to the build
+            displayName: info
+            path: info
+          - description: Version the operator version controlling this Platform
+            displayName: version
+            path: version
+        version: v1alpha08
+      - description: SonataFlow is the descriptor representation for a workflow application based on the CNCF Serverless Workflow specification.
+        displayName: Sonata Flow
+        kind: SonataFlow
+        name: sonataflows.sonataflow.org
+        resources:
+          - kind: Deployment
+            name: A Deployment for the Flow
+            version: apps/v1
+          - kind: Service
+            name: A Knative Serving Service for the Flow
+            version: serving.knative.dev/v1
+          - kind: Service
+            name: A Service for the Flow
+            version: v1
+          - kind: SonataFlowBuild
+            name: A SonataFlow Build
+            version: sonataflow.org/v1alpha08
+          - kind: Route
+            name: An OpenShift Route for the Flow
+            version: route.openshift.io/v1
+          - kind: ConfigMap
+            name: The ConfigMaps with Flow definition and additional configuration files
+            version: v1
+        specDescriptors:
+          - description: Flow the workflow definition.
+            displayName: flow
+            path: flow
+          - description: PodTemplate describes the deployment details of this SonataFlow instance.
+            displayName: podTemplate
+            path: podTemplate
+          - description: Resources workflow resources that are linked to this workflow definition. For example, a collection of OpenAPI specification files.
+            displayName: resources
+            path: resources
+          - description: Sink describes the sinkBinding details of this SonataFlow instance.
+            displayName: sink
+            path: sink
+        statusDescriptors:
+          - description: Address is used as a part of Addressable interface (status.address.url) for knative
+            displayName: address
+            path: address
+          - description: Endpoint is an externally accessible URL of the workflow
+            displayName: endpoint
+            path: endpoint
+          - displayName: lastTimeRecoverAttempt
+            path: lastTimeRecoverAttempt
+          - description: keeps track of how many failure recovers a given workflow had so far
+            displayName: recoverFailureAttempts
+            path: recoverFailureAttempts
+          - description: Services displays which platform services are being used by this workflow
+            displayName: services
+            path: services
+        version: v1alpha08
   description: |-
     OpenShift Serverless Logic Kubernetes Operator for deploying workflow applications
     based on the [CNCF Serverless Workflow specification v0.8](https://serverlessworkflow.io/).
   displayName: OpenShift Serverless Logic Operator
   icon:
-  - base64data: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzOCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iMCAwIDM4IDM4Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO30uYntmaWxsOiNlMDA7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNMjgsMUgxMGE5LDksMCwwLDAtOSw5VjI4YTksOSwwLDAsMCw5LDlIMjhhOSw5LDAsMCwwLDktOVYxMGE5LDksMCwwLDAtOS05WiIvPjxwYXRoIGQ9Ik0yOCwyLjI1QTcuNzU4Nyw3Ljc1ODcsMCwwLDEsMzUuNzUsMTBWMjhBNy43NTg3LDcuNzU4NywwLDAsMSwyOCwzNS43NUgxMEE3Ljc1ODcsNy43NTg3LDAsMCwxLDIuMjUsMjhWMTBBNy43NTg3LDcuNzU4NywwLDAsMSwxMCwyLjI1SDI4TTI4LDFIMTBhOSw5LDAsMCwwLTksOVYyOGE5LDksMCwwLDAsOSw5SDI4YTksOSwwLDAsMCw5LTlWMTBhOSw5LDAsMCwwLTktOVoiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTE0LDIzLjQ3NjZIMTBhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwxNCwyMy40NzY2Wm0tMy4zNzUtMS4yNWgyLjc1di0yLjc1aC0yLjc1WiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMjEsMjMuNDc2NkgxN2EuNjI1My42MjUzLDAsMCwxLS42MjUtLjYyNXYtNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUtLjYyNWg0YS42MjUyLjYyNTIsMCwwLDEsLjYyNS42MjV2NEEuNjI1My42MjUzLDAsMCwxLDIxLDIzLjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0xNy41LDE2LjQ3NjZoLTRhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwxNy41LDE2LjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0yNC41LDE2LjQ3NjZoLTRhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwyNC41LDE2LjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0yOCwyMy40NzY2SDI0YS42MjUzLjYyNTMsMCwwLDEtLjYyNS0uNjI1di00YS42MjUyLjYyNTIsMCwwLDEsLjYyNS0uNjI1aDRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LjYyNXY0QS42MjUzLjYyNTMsMCwwLDEsMjgsMjMuNDc2NlptLTMuMzc1LTEuMjVoMi43NXYtMi43NWgtMi43NVoiLz48cGF0aCBkPSJNMjksMjYuNDc2Nkg5YS42MjUuNjI1LDAsMCwxLDAtMS4yNUgyOWEuNjI1LjYyNSwwLDAsMSwwLDEuMjVaIi8+PC9zdmc+
-    mediatype: image/svg+xml
+    - base64data: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzOCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iMCAwIDM4IDM4Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO30uYntmaWxsOiNlMDA7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJhIiBkPSJNMjgsMUgxMGE5LDksMCwwLDAtOSw5VjI4YTksOSwwLDAsMCw5LDlIMjhhOSw5LDAsMCwwLDktOVYxMGE5LDksMCwwLDAtOS05WiIvPjxwYXRoIGQ9Ik0yOCwyLjI1QTcuNzU4Nyw3Ljc1ODcsMCwwLDEsMzUuNzUsMTBWMjhBNy43NTg3LDcuNzU4NywwLDAsMSwyOCwzNS43NUgxMEE3Ljc1ODcsNy43NTg3LDAsMCwxLDIuMjUsMjhWMTBBNy43NTg3LDcuNzU4NywwLDAsMSwxMCwyLjI1SDI4TTI4LDFIMTBhOSw5LDAsMCwwLTksOVYyOGE5LDksMCwwLDAsOSw5SDI4YTksOSwwLDAsMCw5LTlWMTBhOSw5LDAsMCwwLTktOVoiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTE0LDIzLjQ3NjZIMTBhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwxNCwyMy40NzY2Wm0tMy4zNzUtMS4yNWgyLjc1di0yLjc1aC0yLjc1WiIvPjxwYXRoIGNsYXNzPSJiIiBkPSJNMjEsMjMuNDc2NkgxN2EuNjI1My42MjUzLDAsMCwxLS42MjUtLjYyNXYtNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUtLjYyNWg0YS42MjUyLjYyNTIsMCwwLDEsLjYyNS42MjV2NEEuNjI1My42MjUzLDAsMCwxLDIxLDIzLjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0xNy41LDE2LjQ3NjZoLTRhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwxNy41LDE2LjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0yNC41LDE2LjQ3NjZoLTRhLjYyNTMuNjI1MywwLDAsMS0uNjI1LS42MjV2LTRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LS42MjVoNGEuNjI1Mi42MjUyLDAsMCwxLC42MjUuNjI1djRBLjYyNTMuNjI1MywwLDAsMSwyNC41LDE2LjQ3NjZabS0zLjM3NS0xLjI1aDIuNzV2LTIuNzVoLTIuNzVaIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0yOCwyMy40NzY2SDI0YS42MjUzLjYyNTMsMCwwLDEtLjYyNS0uNjI1di00YS42MjUyLjYyNTIsMCwwLDEsLjYyNS0uNjI1aDRhLjYyNTIuNjI1MiwwLDAsMSwuNjI1LjYyNXY0QS42MjUzLjYyNTMsMCwwLDEsMjgsMjMuNDc2NlptLTMuMzc1LTEuMjVoMi43NXYtMi43NWgtMi43NVoiLz48cGF0aCBkPSJNMjksMjYuNDc2Nkg5YS42MjUuNjI1LDAsMCwxLDAtMS4yNUgyOWEuNjI1LjYyNSwwLDAsMSwwLDEuMjVaIi8+PC9zdmc+
+      mediatype: image/svg+xml
   install:
     spec:
       clusterPermissions:
-      - rules:
-        - apiGroups:
-          - ""
-          resources:
-          - configmaps
-          - pods
-          - pods/exec
-          - services
-          - services/finalizers
-          - namespaces
-          - serviceaccounts
-          - persistentvolumeclaims
-          - secrets
-          - events
-          - deployments
-          - nodes
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - apps
-          resources:
-          - configmaps
-          - pods
-          - pods/exec
-          - services
-          - services/finalizers
-          - namespaces
-          - serviceaccounts
-          - persistentvolumeclaims
-          - secrets
-          - events
-          - deployments
-          - nodes
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - rbac.authorization.k8s.io
-          resources:
-          - roles
-          - rolebindings
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - eventing.knative.dev
-          resources:
-          - triggers
-          - triggers/status
-          - triggers/finalizers
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - sources.knative.dev
-          resources:
-          - sinkbindings
-          - sinkbindings/status
-          - sinkbindings/finalizers
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - serving.knative.dev
-          resources:
-          - service
-          - services
-          - services/status
-          - services/finalizers
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - coordination.k8s.io
-          resources:
-          - leases
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - autoscaling
-          resources:
-          - horizontalpodautoscalers
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - batch
-          resources:
-          - jobs
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - monitoring.coreos.com
-          resources:
-          - servicemonitors
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - update
-          - watch
-        - apiGroups:
-          - policy
-          resources:
-          - poddisruptionbudgets
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - serving.knative.dev
-          resources:
-          - revisions
-          verbs:
-          - delete
-          - list
-          - watch
-        - apiGroups:
-          - sonataflow.org
-          resources:
-          - sonataflowbuilds
-          - sonataflowclusterplatforms
-          - sonataflowplatforms
-          - sonataflows
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - sonataflow.org
-          resources:
-          - sonataflowbuilds/finalizers
-          - sonataflowclusterplatforms/finalizers
-          - sonataflowplatforms/finalizers
-          - sonataflows/finalizers
-          verbs:
-          - update
-        - apiGroups:
-          - sonataflow.org
-          resources:
-          - sonataflowbuilds/status
-          - sonataflowclusterplatforms/status
-          - sonataflowplatforms/status
-          - sonataflows/scale
-          - sonataflows/status
-          verbs:
-          - get
-          - patch
-          - update
-        - apiGroups:
-          - route.openshift.io
-          resources:
-          - route
-          - routes
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - route.openshift.io
-          resources:
-          - route/finalizers
-          - routes/finalizers
-          verbs:
-          - get
-          - list
-          - create
-          - update
-          - delete
-          - deletecollection
-          - patch
-          - watch
-        - apiGroups:
-          - image.openshift.io
-          resources:
-          - imagestreams
-          - imagestreamtags
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - image.openshift.io
-          resources:
-          - imagestreams/finalizers
-          - imagestreamtags/finalizers
-          verbs:
-          - get
-          - list
-          - create
-          - update
-          - delete
-          - deletecollection
-          - patch
-          - watch
-        - apiGroups:
-          - build.openshift.io
-          resources:
-          - buildconfigs
-          - builds
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - build.openshift.io
-          resources:
-          - buildconfigs/finalizers
-          - builds/finalizers
-          verbs:
-          - get
-          - list
-          - create
-          - update
-          - delete
-          - deletecollection
-          - patch
-          - watch
-        - apiGroups:
-          - build.openshift.io
-          resources:
-          - buildconfigs/instantiatebinary
-          verbs:
-          - create
-        - apiGroups:
-          - authentication.k8s.io
-          resources:
-          - tokenreviews
-          verbs:
-          - create
-        - apiGroups:
-          - authorization.k8s.io
-          resources:
-          - subjectaccessreviews
-          verbs:
-          - create
-        - apiGroups:
-          - apps
-          resources:
-          - statefulset
-          - statefulsets
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - networking.k8s.io
-          resources:
-          - ingress
-          - ingresses
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - serving.knative.dev
-          resources:
-          - service
-          - services
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - eventing.knative.dev
-          resources:
-          - broker
-          - brokers
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - apps.openshift.io
-          resources:
-          - deploymentconfigs
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - route.openshift.io
-          resources:
-          - routes
-          verbs:
-          - get
-          - list
-          - watch
-        serviceAccountName: logic-operator-controller-manager
+        - rules:
+            - apiGroups:
+                - ""
+              resources:
+                - configmaps
+                - pods
+                - pods/exec
+                - services
+                - services/finalizers
+                - namespaces
+                - serviceaccounts
+                - persistentvolumeclaims
+                - secrets
+                - events
+                - deployments
+                - nodes
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - apps
+              resources:
+                - configmaps
+                - pods
+                - pods/exec
+                - services
+                - services/finalizers
+                - namespaces
+                - serviceaccounts
+                - persistentvolumeclaims
+                - secrets
+                - events
+                - deployments
+                - nodes
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - rbac.authorization.k8s.io
+              resources:
+                - roles
+                - rolebindings
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - eventing.knative.dev
+              resources:
+                - triggers
+                - triggers/status
+                - triggers/finalizers
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - sources.knative.dev
+              resources:
+                - sinkbindings
+                - sinkbindings/status
+                - sinkbindings/finalizers
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - serving.knative.dev
+              resources:
+                - service
+                - services
+                - services/status
+                - services/finalizers
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - coordination.k8s.io
+              resources:
+                - leases
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - autoscaling
+              resources:
+                - horizontalpodautoscalers
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - batch
+              resources:
+                - jobs
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - monitoring.coreos.com
+              resources:
+                - servicemonitors
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - update
+                - watch
+            - apiGroups:
+                - policy
+              resources:
+                - poddisruptionbudgets
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - serving.knative.dev
+              resources:
+                - revisions
+              verbs:
+                - delete
+                - list
+                - watch
+            - apiGroups:
+                - sonataflow.org
+              resources:
+                - sonataflowbuilds
+                - sonataflowclusterplatforms
+                - sonataflowplatforms
+                - sonataflows
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - sonataflow.org
+              resources:
+                - sonataflowbuilds/finalizers
+                - sonataflowclusterplatforms/finalizers
+                - sonataflowplatforms/finalizers
+                - sonataflows/finalizers
+              verbs:
+                - update
+            - apiGroups:
+                - sonataflow.org
+              resources:
+                - sonataflowbuilds/status
+                - sonataflowclusterplatforms/status
+                - sonataflowplatforms/status
+                - sonataflows/scale
+                - sonataflows/status
+              verbs:
+                - get
+                - patch
+                - update
+            - apiGroups:
+                - route.openshift.io
+              resources:
+                - route
+                - routes
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - route.openshift.io
+              resources:
+                - route/finalizers
+                - routes/finalizers
+              verbs:
+                - get
+                - list
+                - create
+                - update
+                - delete
+                - deletecollection
+                - patch
+                - watch
+            - apiGroups:
+                - image.openshift.io
+              resources:
+                - imagestreams
+                - imagestreamtags
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - image.openshift.io
+              resources:
+                - imagestreams/finalizers
+                - imagestreamtags/finalizers
+              verbs:
+                - get
+                - list
+                - create
+                - update
+                - delete
+                - deletecollection
+                - patch
+                - watch
+            - apiGroups:
+                - build.openshift.io
+              resources:
+                - buildconfigs
+                - builds
+              verbs:
+                - create
+                - delete
+                - deletecollection
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - build.openshift.io
+              resources:
+                - buildconfigs/finalizers
+                - builds/finalizers
+              verbs:
+                - get
+                - list
+                - create
+                - update
+                - delete
+                - deletecollection
+                - patch
+                - watch
+            - apiGroups:
+                - build.openshift.io
+              resources:
+                - buildconfigs/instantiatebinary
+              verbs:
+                - create
+            - apiGroups:
+                - authentication.k8s.io
+              resources:
+                - tokenreviews
+              verbs:
+                - create
+            - apiGroups:
+                - authorization.k8s.io
+              resources:
+                - subjectaccessreviews
+              verbs:
+                - create
+            - apiGroups:
+                - apps
+              resources:
+                - statefulset
+                - statefulsets
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - networking.k8s.io
+              resources:
+                - ingress
+                - ingresses
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - serving.knative.dev
+              resources:
+                - service
+                - services
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - eventing.knative.dev
+              resources:
+                - broker
+                - brokers
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - apps.openshift.io
+              resources:
+                - deploymentconfigs
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - route.openshift.io
+              resources:
+                - routes
+              verbs:
+                - get
+                - list
+                - watch
+          serviceAccountName: logic-operator-controller-manager
       deployments:
-      - label:
-          app.kubernetes.io/name: sonataflow-operator
-        name: logic-operator-controller-manager
-        spec:
-          replicas: 1
-          selector:
-            matchLabels:
-              app.kubernetes.io/name: sonataflow-operator
-          strategy: {}
-          template:
-            metadata:
-              annotations:
-                kubectl.kubernetes.io/default-container: manager
-              labels:
+        - label:
+            app.kubernetes.io/name: sonataflow-operator
+          name: logic-operator-controller-manager
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
                 app.kubernetes.io/name: sonataflow-operator
-            spec:
-              containers:
-              - args:
-                - --health-probe-bind-address=:8081
-                - --metrics-bind-address=127.0.0.1:8080
-                - --leader-elect
-                - --lease-duration=60s
-                - --renew-deadline=40s
-                - --retry-period=15s
-                - --qps=50
-                - --burst=100
-                - --v=0
-                command:
-                - /usr/local/bin/manager
-                env:
-                - name: POD_NAMESPACE
-                  valueFrom:
-                    fieldRef:
-                      fieldPath: metadata.namespace
-                - name: RELATED_IMAGE_JOBS_SERVICE_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9@sha256:e13d0e91a0627f968a3bdddb307d66e218667890b103d33016fbc8fdd39701a4
-                - name: RELATED_IMAGE_JOBS_SERVICE_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9@sha256:60bb70c1680aab7c6ee94bf01d1eca40238177729616318539357209915e942c
-                - name: RELATED_IMAGE_DATA_INDEX_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9@sha256:3d9c6fd313af94b90725261abf20bb0210f08e47fe584a781ecdc8f24669c1a6
-                - name: RELATED_IMAGE_DATA_INDEX_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9@sha256:fcacec9727fb0831fc49f1e8f3f9b5a423e08780354dc2d1fd2cc5570fd60bd7
-                - name: RELATED_IMAGE_DB_MIGRATOR_TOOL
-                  value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9@sha256:ec6097c7fc188a3aeda57502245891a027e0fc0422ee18a21d62231f65b5fde1
-                - name: RELATED_IMAGE_BASE_BUILDER
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:5fe9ca1cc84ee80f770a8d209978fe03712ecc1bf4a1ccc8c137850a468f8062
-                - name: RELATED_IMAGE_DEVMODE
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:0d5d80b5b68ee48f8e6832c064af13acd066580bf28576602f3a6c00542d931b
-                image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:9ddb0a028e84f9f74b316a60511503da97a5cd1a77edaaf7988c9599fb447055
-                livenessProbe:
-                  httpGet:
-                    path: /healthz
-                    port: 8081
-                  initialDelaySeconds: 15
-                  periodSeconds: 20
-                name: manager
-                readinessProbe:
-                  httpGet:
-                    path: /readyz
-                    port: 8081
-                  initialDelaySeconds: 5
-                  periodSeconds: 10
-                resources:
-                  limits:
-                    cpu: 500m
-                    memory: 500Mi
-                  requests:
-                    cpu: 100m
-                    memory: 200Mi
+            strategy: {}
+            template:
+              metadata:
+                annotations:
+                  kubectl.kubernetes.io/default-container: manager
+                labels:
+                  app.kubernetes.io/name: sonataflow-operator
+              spec:
+                containers:
+                  - args:
+                      - --health-probe-bind-address=:8081
+                      - --metrics-bind-address=127.0.0.1:8080
+                      - --leader-elect
+                      - --lease-duration=60s
+                      - --renew-deadline=40s
+                      - --retry-period=15s
+                      - --qps=50
+                      - --burst=100
+                      - --v=0
+                    command:
+                      - /usr/local/bin/manager
+                    env:
+                      - name: POD_NAMESPACE
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.namespace
+                      - name: RELATED_IMAGE_JOBS_SERVICE_POSTGRESQL
+                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9@sha256:bff1cfdeeae8c9b56c2d9c52db7c122458bfdb3485297826f167c3f47d554d53
+                      - name: RELATED_IMAGE_JOBS_SERVICE_EPHEMERAL
+                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9@sha256:2a09876e43354086fc5a3cc4ffc9593bffefa1c56ecba25ff09fc47b7afbb94f
+                      - name: RELATED_IMAGE_DATA_INDEX_POSTGRESQL
+                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9@sha256:cafc838f7f561bc301da40f8e105ebf9c2688d142d9fa2ab1259b559f8f22b8c
+                      - name: RELATED_IMAGE_DATA_INDEX_EPHEMERAL
+                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9@sha256:f8297db60a085006c31c76c6c440b96c1547e6bd58fc4c0ea9d889bf207db2ab
+                      - name: RELATED_IMAGE_DB_MIGRATOR_TOOL
+                        value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9@sha256:a296051c5cd70df900aca14da19cb03ec815f544dbb8860e009db009081fd0be
+                      - name: RELATED_IMAGE_BASE_BUILDER
+                        value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:bf3c4c1ae080bae4fc46488eb0c09838ae5ca29f7c28e8d3acffff8e021b0879
+                      - name: RELATED_IMAGE_DEVMODE
+                        value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:cc705074dbd8cf4a1dc3a1b006daca7a65ac20c2f051da04ee646b076afa98c7
+                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:9ddb0a028e84f9f74b316a60511503da97a5cd1a77edaaf7988c9599fb447055
+                    livenessProbe:
+                      httpGet:
+                        path: /healthz
+                        port: 8081
+                      initialDelaySeconds: 15
+                      periodSeconds: 20
+                    name: manager
+                    readinessProbe:
+                      httpGet:
+                        path: /readyz
+                        port: 8081
+                      initialDelaySeconds: 5
+                      periodSeconds: 10
+                    resources:
+                      limits:
+                        cpu: 500m
+                        memory: 500Mi
+                      requests:
+                        cpu: 100m
+                        memory: 200Mi
+                    securityContext:
+                      allowPrivilegeEscalation: false
+                      capabilities:
+                        drop:
+                          - ALL
+                    volumeMounts:
+                      - mountPath: /config/controllers_cfg.yaml
+                        name: controllers-config
+                        subPath: controllers_cfg.yaml
+                  - args:
+                      - --secure-listen-address=0.0.0.0:8443
+                      - --upstream=http://127.0.0.1:8080/
+                      - --logtostderr=true
+                      - --v=0
+                    env:
+                      - name: RELATED_IMAGE_KUBE_RBAC_PROXY
+                        value: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
+                    image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
+                    name: kube-rbac-proxy
+                    ports:
+                      - containerPort: 8443
+                        name: https
+                        protocol: TCP
+                    resources:
+                      limits:
+                        cpu: 500m
+                        memory: 128Mi
+                      requests:
+                        cpu: 5m
+                        memory: 64Mi
+                    securityContext:
+                      allowPrivilegeEscalation: false
+                      capabilities:
+                        drop:
+                          - ALL
+                      seccompProfile:
+                        type: RuntimeDefault
                 securityContext:
-                  allowPrivilegeEscalation: false
-                  capabilities:
-                    drop:
-                    - ALL
-                volumeMounts:
-                - mountPath: /config/controllers_cfg.yaml
-                  name: controllers-config
-                  subPath: controllers_cfg.yaml
-              - args:
-                - --secure-listen-address=0.0.0.0:8443
-                - --upstream=http://127.0.0.1:8080/
-                - --logtostderr=true
-                - --v=0
-                env:
-                - name: RELATED_IMAGE_KUBE_RBAC_PROXY
-                  value: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
-                image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
-                name: kube-rbac-proxy
-                ports:
-                - containerPort: 8443
-                  name: https
-                  protocol: TCP
-                resources:
-                  limits:
-                    cpu: 500m
-                    memory: 128Mi
-                  requests:
-                    cpu: 5m
-                    memory: 64Mi
-                securityContext:
-                  allowPrivilegeEscalation: false
-                  capabilities:
-                    drop:
-                    - ALL
-                  seccompProfile:
-                    type: RuntimeDefault
-              securityContext:
-                runAsNonRoot: true
-              serviceAccountName: logic-operator-controller-manager
-              terminationGracePeriodSeconds: 10
-              volumes:
-              - configMap:
-                  name: logic-operator-controllers-config
-                name: controllers-config
+                  runAsNonRoot: true
+                serviceAccountName: logic-operator-controller-manager
+                terminationGracePeriodSeconds: 10
+                volumes:
+                  - configMap:
+                      name: logic-operator-controllers-config
+                    name: controllers-config
       permissions:
-      - rules:
-        - apiGroups:
-          - ""
-          resources:
-          - configmaps
-          verbs:
-          - get
-          - list
-          - watch
-          - create
-          - update
-          - patch
-          - delete
-        - apiGroups:
-          - coordination.k8s.io
-          resources:
-          - leases
-          verbs:
-          - get
-          - list
-          - watch
-          - create
-          - update
-          - patch
-          - delete
-        - apiGroups:
-          - ""
-          resources:
-          - events
-          verbs:
-          - create
-          - patch
-        serviceAccountName: logic-operator-controller-manager
+        - rules:
+            - apiGroups:
+                - ""
+              resources:
+                - configmaps
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - update
+                - patch
+                - delete
+            - apiGroups:
+                - coordination.k8s.io
+              resources:
+                - leases
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - update
+                - patch
+                - delete
+            - apiGroups:
+                - ""
+              resources:
+                - events
+              verbs:
+                - create
+                - patch
+          serviceAccountName: logic-operator-controller-manager
     strategy: deployment
   installModes:
-  - supported: false
-    type: OwnNamespace
-  - supported: false
-    type: SingleNamespace
-  - supported: false
-    type: MultiNamespace
-  - supported: true
-    type: AllNamespaces
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
   keywords:
-  - sonataflow
-  - cncf
-  - serverless
-  - serverlessworkflow
-  - workflows
+    - sonataflow
+    - cncf
+    - serverless
+    - serverlessworkflow
+    - workflows
   links:
-  - name: Documentation
-    url: https://docs.openshift.com/serverless/
-  - name: Source Repository
-    url: https://github.com/kubesmarts/kie-tools
+    - name: Documentation
+      url: https://docs.openshift.com/serverless/
+    - name: Source Repository
+      url: https://github.com/kubesmarts/kie-tools
   maintainers:
-  - email: serverless-logic-team@redhat.com
-    name: Red Hat
+    - email: serverless-logic-team@redhat.com
+      name: Red Hat
   maturity: stable
   minKubeVersion: 1.23.0
   provider:
