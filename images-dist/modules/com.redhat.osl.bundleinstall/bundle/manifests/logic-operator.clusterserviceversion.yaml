@@ -863,4 +863,6 @@ spec:
   provider:
     name: Red Hat
   replaces: logic-operator.v1.38.0
-  version: 1.38.0
+  skips:
+  - logic-operator.v1.37.3
+  version: 1.38.1
