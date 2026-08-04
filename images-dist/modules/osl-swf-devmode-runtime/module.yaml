@@ -18,9 +18,8 @@
 #
 schema_version: 1
 name: com.redhat.osl.swf.devmode.runtime
-version: "main"
+version: "1.39.0"
 description: "OpenShift Serverless Logic devmode with required extensions"
-
 envs:
   - name: QUARKUS_KOGITO_DEVSERVICES_ENABLED
     description: Whether to enable Kogito Devservices or not. Default to "false" since Data Index needs Docker.
@@ -40,7 +39,6 @@ envs:
   - name: KOGITO_CODEGEN_PROCESS_FAILONERROR
     description: Boolean flag that will prevent Dev Mode to crash if the provided workflow is wrong.
     value: "false"
-
 artifacts:
   - name: kogito-devmode-quarkus-app-image-build.zip
     description: "kogito-devmode-quarkus-app-9.102.0.redhat-00004-image-build"
@@ -48,6 +46,5 @@ artifacts:
   - name: kogito-devmode-maven-repository-image-build.zip
     description: "kogito-devmode-maven-repository-9.102.0.redhat-00004-image-build"
     md5: "750c96be4767210eb85823e43706f3b5"
-
 execute:
   - script: configure.sh

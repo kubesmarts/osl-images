@@ -18,13 +18,10 @@
 #
 schema_version: 1
 name: org.kie.kogito.dynamic.resources
-version: "main"
-
+version: "1.39.0"
 description: -| Module retrieved from https://github.com/jboss-openshift/cct_module/blob/master/jboss/container/java/jvm/bash However it contains a few customizations to fit Kogito needs.
-
 execute:
   - script: configure
-
 envs:
   - name: JAVA_OPTIONS
     description: User specified Java options to be appended to generated options in JAVA_OPTS (internal use).
