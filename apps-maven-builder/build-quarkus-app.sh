@@ -60,7 +60,7 @@ osl_swf_devmode_extensions="org.apache.kie.sonataflow:sonataflow-quarkus-devui:$
 osl_swf_builder_extensions="org.kie:kie-addons-quarkus-events-process:${kogito_version},org.kie:kogito-addons-quarkus-jobs-knative-eventing:${kogito_version}"
 
 if [ -z ${quarkus_platform_version} ]; then
-    echo "Please provide the quarkus version"
+    echo "Please provide the quarkus version CI CHECK"
     exit 1
 fi
 
