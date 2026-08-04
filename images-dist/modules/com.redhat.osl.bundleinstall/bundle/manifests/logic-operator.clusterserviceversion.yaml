@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2026-07-31T13:08:14Z"
+    createdAt: "2026-08-04T14:59:21Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
     features.operators.openshift.io/fips-compliant: "false"
