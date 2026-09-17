@@ -57,7 +57,7 @@ quarkus_extensions="smallrye-health,org.apache.kie.sonataflow:sonataflow-quarkus
 # dev mode purpose extensions used only by the osl-swf-devmode
 osl_swf_devmode_extensions="org.apache.kie.sonataflow:sonataflow-quarkus-devui:${kogito_version},org.kie:kogito-addons-quarkus-jobs-service-embedded:${kogito_version},org.kie:kogito-addons-quarkus-data-index-inmemory:${kogito_version}"
 # builder/prod extensions used only by the osl-swf-builder
-osl_swf_builder_extensions="org.kie:kie-addons-quarkus-events-process:${kogito_version},org.kie:kogito-addons-quarkus-jobs-knative-eventing:${kogito_version}"
+osl_swf_builder_extensions="org.kie:kie-addons-quarkus-events-process:${kogito_version},org.kie:kogito-addons-quarkus-jobs-knative-eventing:${kogito_version},org.apache.kie.sonataflow:sonataflow-addons-quarkus-startup-validation:${kogito_version}"
 
 if [ -z ${quarkus_platform_version} ]; then
     echo "Please provide the quarkus version"
