@@ -28,7 +28,7 @@
         image_build_method: imagebuilder
         remote_source:
           repo: https://github.com/kubesmarts/kie-tools
-          ref: bb169d1866208bb15c0bb5b68d4a3d4dccc637bf
+          ref: f08b86645c44277f862ee0d834a0b2a118e0e14e
           pkg_managers:
             - gomod
           packages:
