@@ -18,7 +18,7 @@
 #
 schema_version: 1
 name: com.redhat.osl.maven
-version: "1.37.2"
+version: "1.37.3"
 
 execute:
   - script: configure
