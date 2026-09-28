@@ -734,7 +734,7 @@ spec:
                         value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:3dc4ad5a93ba4383065260ef667d4a99f61d076a3db7f7aa62dfb4e792dd5b18
                       - name: RELATED_IMAGE_DEVMODE
                         value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:bdbd6e6f80b52d6e11d683e3fa0170061dbc2df02555033b31f306adca68f61e
-                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:7c8a27397295902c1a0ce37871b83d08f5b2fb13e8248c19c51938059f3b258e
+                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:27264456d69acf48283684f692b7fe592e4302ba938c946bee788cf08afe8b02
                     livenessProbe:
                       httpGet:
                         path: /healthz
