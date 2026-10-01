@@ -23,7 +23,7 @@ version: "1.37.3"
 description: "Red Hat build of Kogito Serverless Workflow development mode image with Quarkus extensions libraries preinstalled"
 labels:
   - name: "io.quarkus.platform.version"
-    value: "3.20.3.redhat-00006"
+    value: "3.20.6.SP2-redhat-00001"
   - name: "org.kie.kogito.version"
     value: "9.104.0.redhat-00009"
   - name: "io.k8s.description"
