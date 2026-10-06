@@ -732,19 +732,19 @@ spec:
                     fieldRef:
                       fieldPath: metadata.namespace
                 - name: RELATED_IMAGE_JOBS_SERVICE_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9@sha256:6a91221f73591088fb4536646d75ef24e6402fb16cb2c1d2e11a124378419239
+                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9@sha256:da78a3bf89bce67cdbe053670a03e41a852e7263470bcece61cfc40abd05c5c0
                 - name: RELATED_IMAGE_JOBS_SERVICE_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9@sha256:844bb9abf82e743e5bc931f5129c49124ace947de091d1f667ce0e1bdec295b9
+                  value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9@sha256:8f4ec4e1180b6ba4cfd0eeeb524698ca80110fb404415ee45d66aba36b821dbd
                 - name: RELATED_IMAGE_DATA_INDEX_POSTGRESQL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9@sha256:9835c042373521452469c5d28a7f8a384238acd7c1db36765c44bfd57417c13d
+                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9@sha256:03051cf9a7da90660e32681b89814420bce97443e10db904028d36d5ea2285c9
                 - name: RELATED_IMAGE_DATA_INDEX_EPHEMERAL
-                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9@sha256:c2c2450d1872f516ecaf35d83febe2a7ffff05fd294693c0f3ce4bb158551fb9
+                  value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9@sha256:5ba8bb7ab7206096303b77c3789874baf6525eedecb097622937f3a94442ceb3
                 - name: RELATED_IMAGE_DB_MIGRATOR_TOOL
-                  value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9@sha256:f1e31c106842153db981838ee3e6d6890730e754c675e938f3bb4790ced4bd61
+                  value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9@sha256:d6853b8419dbddb392e15ebaee027934acc6c46c4a63b80fa368bf64c32d712b
                 - name: RELATED_IMAGE_BASE_BUILDER
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:d3d2b671583722538136295cc5ac8d26619c72e8bb04a0ffafac9ea43d2063c1
+                  value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:7179b0c5919642db8b79cf99b91a7dc1bf26915e3b718a915c9b64368eb36636
                 - name: RELATED_IMAGE_DEVMODE
-                  value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:b4d24d33856fe28114a378ca9b72d963278bc62803b8bbe173aeb250b35087aa
+                  value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:66ebcaa89e901443e2a71c5267288730725fba34c350cd40b648354849b15d72
                 image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:0408a380dc09295863d87952d947877ee75be2b35d033693dca49e65b7092f93
                 livenessProbe:
                   httpGet:
