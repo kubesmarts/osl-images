@@ -862,5 +862,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  replaces: logic-operator.v1.38.1
+  replaces: logic-operator.v1.38.2
   version: 1.39.0
