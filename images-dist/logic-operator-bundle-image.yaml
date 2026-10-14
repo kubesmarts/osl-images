@@ -38,7 +38,7 @@ labels:
   - name: operators.operatorframework.io.bundle.package.v1
     value: logic-operator
   - name: operators.operatorframework.io.bundle.channels.v1
-    value: "1.37"
+    value: "stable-1.37"
   - name: operators.operatorframework.io.bundle.channel.default.v1
     value: 1.37
   - name: operators.operatorframework.io.metrics.mediatype.v1
