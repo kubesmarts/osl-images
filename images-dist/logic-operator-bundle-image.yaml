@@ -40,7 +40,7 @@ labels:
   - name: operators.operatorframework.io.bundle.channels.v1
     value: "stable-1.37"
   - name: operators.operatorframework.io.bundle.channel.default.v1
-    value: 1.37
+    value: stable
   - name: operators.operatorframework.io.metrics.mediatype.v1
     value: metrics+v1
   - name: operators.operatorframework.io.metrics.builder
