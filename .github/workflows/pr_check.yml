@@ -17,6 +17,7 @@ jobs:
       KOGITO_APPS_REPO_URL: "https://github.com/kiegroup/kogito-apps"
       KIE_TOOLS_REPO_URL: "https://github.com/kubesmarts/kie-tools"
       DEPS_BRANCHNAME: "main"
+      KOGITO_RUNTIME_version: "111-SNAPSHOT"
       NIGHTLY: "true"
       NIGHTLY_DEPLOY_FOLDER: "/home/runner/.m2/repository"
     steps:
@@ -80,7 +81,7 @@ jobs:
           git clone --depth 1 --branch $DEPS_BRANCHNAME $KIE_TOOLS_REPO_URL
           cd kie-tools
           mkdir ./packages/maven-base/.mvn
-          echo "-Dversion.org.kie.kogito=111-SNAPSHOT" > "./packages/maven-base/.mvn/maven.config"
+          echo "-Dversion.org.kie.kogito=${KOGITO_RUNTIME_version}" > "./packages/maven-base/.mvn/maven.config"
           echo "--no-snapshot-updates" >> "./packages/maven-base/.mvn/maven.config"
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
