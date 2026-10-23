@@ -106,10 +106,11 @@ mvn -B ${MAVEN_OPTIONS} \
     -DprojectGroupId="org.acme" \
     -DprojectArtifactId="serverless-workflow-project" \
     -DprojectVersionId="1.0.0-SNAPSHOT" \
+    -DplatformGroupId="${quarkus_platform_groupid}" \
     -DplatformVersion="${quarkus_platform_version}" \
     -Dextensions="${quarkus_extensions}" \
     -DquarkusRegistryClient=false \
-    "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":create
+    io.quarkus:quarkus-maven-plugin:"${quarkus_version}":create
 
 # Fix as we cannot rely on Quarkus platform
 # Should be removed once https://issues.redhat.com/browse/KOGITO-9120 is implemented
@@ -225,7 +226,7 @@ mvn -B ${MAVEN_OPTIONS} \
 # 2) Then let Quarkus finalize its offline cache (Quarkus’s “go-offline” goal)
 mvn -B ${MAVEN_OPTIONS} \
    -Dmaven.repo.local=${mvn_local_repo} \
-   "${quarkus_platform_groupid}":quarkus-maven-plugin:"${quarkus_platform_version}":go-offline
+   io.quarkus:quarkus-maven-plugin:"${quarkus_version}":go-offline
 
 # 3) Populate transitive dependencies (Maven’s own “go-offline”)
 mvn -B ${MAVEN_OPTIONS} \
