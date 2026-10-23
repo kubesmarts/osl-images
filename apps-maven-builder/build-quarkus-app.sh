@@ -106,6 +106,7 @@ mvn -B ${MAVEN_OPTIONS} \
     -DprojectGroupId="org.acme" \
     -DprojectArtifactId="serverless-workflow-project" \
     -DprojectVersionId="1.0.0-SNAPSHOT" \
+    -DplatformGroupId="${quarkus_platform_groupid}" \
     -DplatformVersion="${quarkus_platform_version}" \
     -Dextensions="${quarkus_extensions}" \
     -DquarkusRegistryClient=false \
