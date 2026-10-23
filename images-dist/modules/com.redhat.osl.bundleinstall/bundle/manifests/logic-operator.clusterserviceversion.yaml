@@ -129,6 +129,7 @@ metadata:
     features.operators.openshift.io/token-auth-aws: "false"
     features.operators.openshift.io/token-auth-azure: "false"
     features.operators.openshift.io/token-auth-gcp: "false"
+    olm.skipRange:  '>=1.37.2 <1.38.3'
     operatorframework.io/suggested-namespace: openshift-serverless-logic
     operators.openshift.io/valid-subscription: '["OpenShift Container Platform", "OpenShift Platform Plus"]'
     operators.operatorframework.io/builder: operator-sdk-v1.35.0
@@ -136,7 +137,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/kubesmarts/kie-tools
     support: Red Hat
-  name: logic-operator.v1.38.2
+  name: logic-operator.v1.38.3
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -734,7 +735,7 @@ spec:
                         value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9@sha256:45f6b9bec4b24423dc5c2a83ff2277f4fb7e4c70591709093edd636e4196da03
                       - name: RELATED_IMAGE_DEVMODE
                         value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9@sha256:2673e9ce2b9bc81b070e0595e1084541b15ff620806a09f82d2c55af31e5c0a0
-                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:31e3fe4ca2f5a3d11d56114ef589161dc7046661b959daf7f475914817a47f10
+                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator@sha256:fdcfd4d8f76f1a91f93612b800ded80f22b2170fee33ead466f4a8ad37c31aac
                     livenessProbe:
                       httpGet:
                         path: /healthz
@@ -862,5 +863,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  replaces: logic-operator.v1.38.1
-  version: 1.38.2
+  replaces: logic-operator.v1.38.2
+  version: 1.38.3
