@@ -129,7 +129,7 @@ metadata:
     features.operators.openshift.io/token-auth-aws: "false"
     features.operators.openshift.io/token-auth-azure: "false"
     features.operators.openshift.io/token-auth-gcp: "false"
-    olm.skipRange:  '>=1.37.2 <1.38.3'
+    olm.skipRange:  '>=1.37.2 <1.38.4'
     operatorframework.io/suggested-namespace: openshift-serverless-logic
     operators.openshift.io/valid-subscription: '["OpenShift Container Platform", "OpenShift Platform Plus"]'
     operators.operatorframework.io/builder: operator-sdk-v1.35.0
@@ -137,7 +137,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/kubesmarts/kie-tools
     support: Red Hat
-  name: logic-operator.v1.38.3
+  name: logic-operator.v1.38.4
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -863,5 +863,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  replaces: logic-operator.v1.38.2
-  version: 1.38.3
+  replaces: logic-operator.v1.38.3
+  version: 1.38.4
