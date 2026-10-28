@@ -22,11 +22,11 @@ cd "${KN_WORK_DIR}"
 
 cp -v "${SCRIPT_DIR}/added/LICENSE" .
 
-wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/linux/kn-workflow-linux-amd64"
-wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/linux/kn-workflow-linux-arm64"
-wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/windows/kn-workflow-windows-amd64.exe"
-wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/macos/kn-workflow-darwin-amd64"
-wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/macos/kn-workflow-darwin-arm64"
+wget -v -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/linux/kn-workflow-linux-amd64"
+wget -v -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/linux/kn-workflow-linux-arm64"
+wget -v -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/windows/kn-workflow-windows-amd64.exe"
+wget -v -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/macos/kn-workflow-darwin-amd64"
+wget -v -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/macos/kn-workflow-darwin-arm64"
 
 chmod +x kn-workflow-linux-amd64 kn-workflow-linux-arm64 kn-workflow-windows-amd64.exe kn-workflow-darwin-amd64 kn-workflow-darwin-arm64
 
