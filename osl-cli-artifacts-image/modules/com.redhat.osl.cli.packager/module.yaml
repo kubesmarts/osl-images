@@ -29,6 +29,7 @@ envs:
     description: "Immutable working directory for this image, please don't change it"
 args:
   - name: KN_ARTIFACT_URL
+    value: "https://download.devel.redhat.com/staging-cds/etera/kn-workflow-plugin/1/1.39/1.39.0-4/signed"
     description: "Base URL from where to download the artifacts"
 execute:
   - script: install.sh
