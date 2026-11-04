@@ -18,8 +18,9 @@
 #
 schema_version: 1
 name: org.kie.kogito.dataindex.common
-version: "1.39.0"
+version: "1.39.1"
 description: "Common modules for data-index persistence provider images, any addition that is common must be added in this module"
+
 envs:
   - name: "KOGITO_DATA_INDEX_QUARKUS_PROFILE"
     value: "kafka-events-support"
@@ -27,5 +28,6 @@ envs:
   - name: "KOGITO_DATA_INDEX_UI_PATH"
     value: "/home/kogito/ui/"
     description: "Path where the Data Index WebApp UI is served"
+
 execute:
   - script: configure
