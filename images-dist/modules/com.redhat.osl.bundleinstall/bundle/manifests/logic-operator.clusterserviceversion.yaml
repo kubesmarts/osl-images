@@ -120,7 +120,7 @@ metadata:
     capabilities: Basic Install
     categories: Application Runtime
     certified: "false"
-    createdAt: "2026-09-03T09:26:52Z"
+    createdAt: "2026-11-04T09:52:33Z"
     description: OpenShift Serverless Logic Kubernetes Operator for deploying workflow applications based on the CNCF Serverless Workflow specification
     features.operators.openshift.io/disconnected: "false"
     features.operators.openshift.io/fips-compliant: "false"
@@ -136,7 +136,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/kubesmarts/kie-tools
     support: Red Hat
-  name: logic-operator.v0.0.0
+  name: logic-operator.v1.39.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -721,20 +721,20 @@ spec:
                           fieldRef:
                             fieldPath: metadata.namespace
                       - name: RELATED_IMAGE_JOBS_SERVICE_POSTGRESQL
-                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-postgresql-rhel9:1.39.0
                       - name: RELATED_IMAGE_JOBS_SERVICE_EPHEMERAL
-                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-jobs-service-ephemeral-rhel9:1.39.0
                       - name: RELATED_IMAGE_DATA_INDEX_POSTGRESQL
-                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-postgresql-rhel9:1.39.0
                       - name: RELATED_IMAGE_DATA_INDEX_EPHEMERAL
-                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-data-index-ephemeral-rhel9:1.39.0
                       - name: RELATED_IMAGE_DB_MIGRATOR_TOOL
-                        value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-db-migrator-tool-rhel9:1.39.0
                       - name: RELATED_IMAGE_BASE_BUILDER
-                        value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:1.39.0
                       - name: RELATED_IMAGE_DEVMODE
-                        value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:main
-                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator:main
+                        value: registry.redhat.io/openshift-serverless-1/logic-swf-devmode-rhel9:1.39.0
+                    image: registry.redhat.io/openshift-serverless-1/logic-rhel9-operator:1.39.0
                     livenessProbe:
                       httpGet:
                         path: /healthz
@@ -772,7 +772,7 @@ spec:
                     env:
                       - name: RELATED_IMAGE_KUBE_RBAC_PROXY
                         value: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:11d95cfa44633fe822fec1ac24a6ddd16af6035d85125daad9fb9d8bdedbf938
-                    image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:11d95cfa44633fe822fec1ac24a6ddd16af6035d85125daad9fb9d8bdedbf938
+                    image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:09dd98dddb689e0ec546d52c360ced5b2e2592211880761b454e98ab503e3eef
                     name: kube-rbac-proxy
                     ports:
                       - containerPort: 8443
@@ -862,5 +862,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  replaces: logic-operator.v0.0.0
-  version: 0.0.0
+  replaces: logic-operator.v1.38.0
+  version: 1.39.0
