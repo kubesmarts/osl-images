@@ -19,8 +19,9 @@
 schema_version: 1
 name: "openshift-serverless-1/logic-swf-devmode-rhel9"
 from: "registry.access.redhat.com/ubi9/openjdk-17:1.24"
-version: "1.39.0"
+version: "1.39.1"
 description: "Red Hat build of Kogito Serverless Workflow development mode image with Quarkus extensions libraries preinstalled"
+
 labels:
   - name: "io.quarkus.platform.version"
     value: "3.33.4.SP2-redhat-00001"
@@ -38,6 +39,7 @@ labels:
     value: "openshift-serverless-1-logic-swf-devmode-rhel9-container"
   - name: "maintainer"
     value: "serverless-logic <bsig-cloud@redhat.com>"
+
 modules:
   repositories:
     - path: modules
@@ -55,17 +57,21 @@ modules:
     - name: org.kie.sonataflow.devmode.runtime.common
     - name: com.redhat.osl.swf.devmode.runtime
     - name: com.redhat.osl.pkg-update
+
 ports:
   - value: 8080
   - value: 5005
+
 run:
   workdir: "/home/kogito/${PROJECT_ARTIFACT_ID}"
   user: 1001
   cmd:
     - "/home/kogito/launch/run-app-devmode.sh"
+
 packages:
   manager: microdnf
   content_sets_file: content_sets.yaml
+
 osbs:
   configuration:
     container:
@@ -79,4 +85,4 @@ osbs:
   extra_dir: osbs-extra/logic-swf-devmode-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-swf-devmode
-    branch: openshift-serverless-main-rhel-9
+    branch: openshift-serverless-1.39-rhel-9

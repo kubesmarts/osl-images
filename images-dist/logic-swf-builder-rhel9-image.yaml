@@ -18,9 +18,10 @@
 #
 schema_version: 1
 name: "openshift-serverless-1/logic-swf-builder-rhel9"
-version: "1.39.0"
+version: "1.39.1"
 from: "registry.access.redhat.com/ubi9/openjdk-17:1.24"
 description: "Red Hat build of Runtime image for Kogito Serverless Workflow builder with Quarkus extensions libraries preinstalled"
+
 labels:
   - name: "io.openshift.s2i.scripts-url"
     value: "image:///usr/local/s2i"
@@ -42,6 +43,7 @@ labels:
     value: "logic-swf-builder,kogito,swf-builder"
   - name: "io.openshift.expose-services"
     value: "8080:http"
+
 modules:
   repositories:
     - path: modules
@@ -59,15 +61,19 @@ modules:
     - name: org.kie.sonataflow.builder.runtime
     - name: com.redhat.osl.swf.builder.runtime
     - name: com.redhat.osl.pkg-update
+
 run:
   workdir: "/home/kogito/${PROJECT_ARTIFACT_ID}"
   user: 1001
+
 ports:
   - value: 8080
   - value: 5005
+
 packages:
   manager: microdnf
   content_sets_file: content_sets.yaml
+
 osbs:
   configuration:
     container:
@@ -81,4 +87,4 @@ osbs:
   extra_dir: osbs-extra/logic-swf-builder-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-swf-builder
-    branch: openshift-serverless-main-rhel-9
+    branch: openshift-serverless-1.39-rhel-9

@@ -18,7 +18,8 @@
 #
 schema_version: 1
 name: org.kie.sonataflow.builder.runtime
-version: "1.39.0"
+version: "1.39.1"
 description: "Apache KIE SonataFlow builder runtime module"
+
 execute:
   - script: configure.sh
