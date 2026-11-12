@@ -47,7 +47,6 @@ jobs:
           echo "git clone --depth 1 --branch  $DEPS_BRANCHNAME $DROOLS_REPO_URL"
           git clone --depth 1 --branch $DEPS_BRANCHNAME $DROOLS_REPO_URL
           cd drools
-          ./productized/remove_modules.sh ./productized/modules
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
           rm -rf drools
@@ -57,7 +56,6 @@ jobs:
           echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL"
           git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_RUNTIMES_REPO_URL
           cd kogito-runtimes
-          ./productized/remove_modules.sh ./productized/modules
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
           rm -rf kogito-runtimes
@@ -67,7 +65,6 @@ jobs:
           echo "git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_APPS_REPO_URL"
           git clone --depth 1 --branch $DEPS_BRANCHNAME $KOGITO_APPS_REPO_URL
           cd kogito-apps
-          ./productized/remove_modules.sh ./productized/modules
           mvn clean install -B -Dquickly -DskipTests -DskipITs -Dproductized
           cd ..
           rm -rf kogito-apps
