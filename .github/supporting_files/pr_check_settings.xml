@@ -22,6 +22,37 @@
       </repositories>
     </profile>
     <profile>
+      <id>redhat-ga</id>
+      <repositories>
+        <repository>
+          <id>redhat</id>
+          <name>Red Hat GA Repository</name>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>redhat</id>
+          <name>Red Hat GA Repository</name>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
       <id>apache-snapshots</id>
       <repositories>
         <repository>
@@ -42,6 +73,7 @@
 
   <activeProfiles>
     <activeProfile>central</activeProfile>
+    <activeProfile>redhat-ga</activeProfile>
     <activeProfile>apache-snapshots</activeProfile>
   </activeProfiles>
 </settings>
