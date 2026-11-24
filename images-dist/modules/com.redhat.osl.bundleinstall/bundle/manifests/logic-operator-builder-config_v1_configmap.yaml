@@ -11,14 +11,14 @@ data:
     under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES
     OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for
     the\n# specific language governing permissions and limitations\n# under the License.\n\nFROM
-    registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:main AS builder\n\n#
+    registry.redhat.io/openshift-serverless-1/logic-swf-builder-rhel9:1.38.0 AS builder\n\n#
     variables that can be overridden by the builder\n# To add a Quarkus extension
     to your application\nARG QUARKUS_EXTENSIONS\n# Args to pass to the Quarkus CLI
     add extension command\nARG QUARKUS_ADD_EXTENSION_ARGS\n# Additional java/mvn arguments
     to pass to the builder\nARG MAVEN_ARGS_APPEND\n\n# Copy from build context to
     skeleton resources project\nCOPY --chown=1001 . ./resources\n\nRUN /home/kogito/launch/build-app.sh
     ./resources\n  \n#=============================\n# Runtime Run\n#=============================\nFROM
-    registry.access.redhat.com/ubi9/openjdk-17-runtime:1.24\n\nENV LANG='en_US.UTF-8'
+    registry.access.redhat.com/ubi9/openjdk-17-runtime:1.23\n\nENV LANG='en_US.UTF-8'
     LANGUAGE='en_US:en'\n  \n# We make four distinct layers so if there are application
     changes the library layers can be re-used\nCOPY --from=builder --chown=185 /home/kogito/serverless-workflow-project/target/quarkus-app/lib/
     /deployments/lib/\nCOPY --from=builder --chown=185 /home/kogito/serverless-workflow-project/target/quarkus-app/*.jar

@@ -6447,15 +6447,6 @@ spec:
                               - name
                               type: object
                             type: array
-                          metadata:
-                            description: Defines the metadata for the PodTemplate
-                              definition of a service.
-                            properties:
-                              labels:
-                                additionalProperties:
-                                  type: string
-                                type: object
-                            type: object
                           nodeName:
                             description: |-
                               NodeName is a request to schedule this pod onto a specific node. If it is non-empty,
@@ -14927,15 +14918,6 @@ spec:
                               - name
                               type: object
                             type: array
-                          metadata:
-                            description: Defines the metadata for the PodTemplate
-                              definition of a service.
-                            properties:
-                              labels:
-                                additionalProperties:
-                                  type: string
-                                type: object
-                            type: object
                           nodeName:
                             description: |-
                               NodeName is a request to schedule this pod onto a specific node. If it is non-empty,
