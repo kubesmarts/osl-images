@@ -15,14 +15,14 @@
 schema_version: 1
 name: "openshift-serverless-1/logic-operator-bundle"
 description: "OpenShift Serverless Logic Operator Bundle"
-version: "1.38.1"
+version: "1.38.0"
 from: "scratch"
 
 labels:
   - name: maintainer
     value: bsig-cloud@redhat.com
   - name: com.redhat.component
-    value: openshift-serverless-1-logic-rhel9-operator-bundle-container
+    value: openshift-serverless-1-logic-operator-bundle-container
   - name: io.k8s.description
     value: Operator Bundle for deploying OpenShift Serverless Logic Operator
   - name: io.k8s.display-name
@@ -38,7 +38,7 @@ labels:
   - name: operators.operatorframework.io.bundle.package.v1
     value: logic-operator
   - name: operators.operatorframework.io.bundle.channels.v1
-    value: "stable-1.38"
+    value: "stable"
   - name: operators.operatorframework.io.bundle.channel.default.v1
     value: stable
   - name: operators.operatorframework.io.metrics.mediatype.v1
